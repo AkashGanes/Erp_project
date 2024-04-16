@@ -1,0 +1,206 @@
+
+
+
+
+
+
+
+
+
+
+
+<app-dashboard></app-dashboard>
+<div class="content-wrapper">
+
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+<div class="col-sm-6">
+<h1>Simple Tables</h1>
+</div>
+<div class="col-sm-6">
+<ol class="breadcrumb float-sm-right">
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item active">Simple Tables</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<div class="d-flex justify-content-end mb-3 mr-3"><a class="btn btn-primary " href="javascript:void(0);" role="button"><i class="fas fa-plus"></i> Add</a></div>
+
+<section class="content">
+<div class="container-fluid  shadow-lg p-3 mb-5 bg-body rounded">
+
+
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">Responsive Hover Table</h3>
+<div class="card-tools">
+<div class="input-group input-group-sm" style="width: 150px;">
+<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+<div class="input-group-append">
+<button type="submit" class="btn btn-default">
+<i class="fas fa-search"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card-body">
+<table class="table table-hover text-nowrap">
+<thead>
+<tr>
+    <th scope="col">S.No</th>
+    <th scope="col">User Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let details of allUserDetails">
+  <td>{{details.id}}</td>
+  <td>{{details.userName}}</td>
+  <td>{{details.lastName}}</td>
+  <td>{{details.email}}</td>
+  <td>{{details.phoneNumber}}</td>
+  <td class="d-flex align-items-center ">
+    <!-- <a href="javascript:void(0);" routerLink="/admin" class="nav-link text-dark" (click)="update(details)"><i class="fas fa-edit" ></i></a>
+    <a href="" class="nav-link text-dark"><i class="fa fa-trash"></i></a> -->
+    
+      <div class="btn-group ">
+        <button type="button" class="btn btn-secondary">Actions</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+          <li><a class="dropdown-item" href="javascript:void(0);" routerLink="" (click)="update(details.id)">Edit</a></li>
+          <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#my-modal" (click)="deleteCall(details.id)">Remove</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0);" routerLink="/change-password/{{details.id}}">Change Password</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+      </div>
+    
+  </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer class="main-footer">
+<div class="float-right d-none d-sm-block">
+<b>Version</b> 3.2.0
+</div>
+<strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+</footer>
+
+
+<!-- <br>
+<div class="container">
+    <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">MiddleName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let details of allUserDetails">
+            <td>{{details.id}}</td>
+            <td>{{details.firstName}}</td>
+            <td>{{details.lastName}}</td>
+            <td>{{details.middleName}}</td>
+            <td>{{details.email}}</td>
+            <td>{{details.phoneNumber}}</td>
+            <td class="d-flex align-items-center justify-content-evenly">
+              <a href="" class="nav-link text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit" ></i></a>
+              <a href="" class="nav-link text-dark"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div> -->
+  
+
+<!-- Modal -->
+ 
+<!-- <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="register-form" action="" #formGroup="ngForm">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-uppercase">FirstName</label>
+            <input type="text" class="form-control" name="firstName"  id="firstName" >
+         </div>
+         <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">MiddleName</label>
+          <input type="text" class="form-control" name="middleName"  id="middleName">
+       </div>
+         <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">LastName</label>
+          <input type="text" class="form-control" name="lastName"  id="lastName">
+       </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+            <input type="text"  class="form-control" name="email" id="email" > 
+         </div>
+         <div class="form-group">
+            <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+            <input  class="form-control" type="password"  name="password" id="password" >
+         </div>
+         <div class="form-group">
+          <label for="exampleInputEmail1" class="text-uppercase">PhoneNumber</label>
+          <input type="text" class="form-control" name="phoneNumber"  id="phoneNumber" > 
+         </div>
+         </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+  
+  <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content ">   
+              <div class="modal-body p-0">
+                  <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                      <div class="card-header pb-0 bg-white border-0 "><div class="row"><div class="col ml-auto"><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div> </div>
+                      <p class="font-weight-bold mb-2"> Are you sure you wanna delete this ?</p><p class="text-muted "> This data will be deleted permenantly.</p>     </div>
+                      <div class="card-body px-sm-4 mb-2 pt-1 pb-0"> 
+                          <div class="row justify-content-end no-gutters"><div class="col-auto"><button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button></div><div class="col-auto"><button type="button" class="btn btn-danger px-4" data-dismiss="modal" (click)="delete()">Delete</button></div></div>
+                      </div>
+                  </div>  
+              </div>
+          </div>
+      </div>
+  </div>
