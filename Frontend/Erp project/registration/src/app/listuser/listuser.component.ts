@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AdminComponent } from '../admin/admin.component';
 import { LoginSignupService } from '../service/login-signup.service';
 import { Router } from '@angular/router';
 
@@ -9,18 +8,25 @@ import { Router } from '@angular/router';
   styleUrl: './listuser.component.scss'
 })
 export class ListuserComponent {
-  constructor(public loginService:LoginSignupService,public admin:AdminComponent,public router:Router){
+  constructor(public loginService:LoginSignupService,public router:Router){
    
     this.getAll()
   }
 
+  currentPage: number = 1;
   updateUser={
     id:"",
     userName:"",
     lastName:"",
     email:"",
     password:"",
-    phoneNumber:""
+    phoneNumber:"",
+    role:[
+      {
+        roleName:"",
+        roleDescription:""
+      }
+    ]
 }
   allUserDetails:any=[]
   id!:number
@@ -33,12 +39,12 @@ export class ListuserComponent {
   update(id:number){
     // this.admin.edit(id);
     // this.loginService.getId(id)
-    this.router.navigate(['/admin',id])
+    this.router.navigate(['/edit',id])
 }
 deleteCall(id:number){
 this.id=id
 }
-delete(){
+ delete(){
   console.log(this.id)
   this.loginService.delete(this.id).subscribe((resp)=>{
     console.log(resp)

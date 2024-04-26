@@ -1,0 +1,98 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Leave Application Form</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="" routerLink="/viewleavepage">View</a></li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Application Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="d-flex justify-content-end mb-3 mr-3"><a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></div> -->
+
+    <section class="content ">
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row ">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-dark">
+                       
+                        <form class="row g-3 pl-5 pr-5 pt-3 pb-3 " action="" #formGroup="ngForm" (ngSubmit)="formGroup.form.valid && onSubmit(formGroup)">
+                            
+                                <!-- <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Employee Id</label>
+                                    <input type="number"    id="id"  placeholder="Enter Id" class="form-control">
+                                </div> -->
+                                
+                                <div class="form-group col-md-6 grp1">
+                                    <label for="exampleInputEmail1">Employee Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Name"  class="form-control" name="employeName"  id="employeName" [(ngModel)]="formData.employeName" #firstName="ngModel" required >
+                                </div>
+                                
+                                <div class="form-group col-md-6 grp2">
+                                    <div class="form-group">
+                                        <label for="form_need">Leave Type</label>
+                                        <select class="form-control" (change)="changeType($event)">
+                                            <option value="" selected >--Select Your Reason--</option>
+                                            <option >Sick</option>
+                                            <option >Casual</option>
+                                            <option >Personal</option>
+                                            <option >Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>  
+                                
+                                <div class="form-group col-md-6 sd grp2" >
+                                    <label for="exampleInputEmail1">Start Date</label>
+                                    <input type="date" class="form-control"  class="form-control" name="startDate"  id="startDate" [(ngModel)]="formData.startDate" #startDate="ngModel" required>
+                                </div>
+                            
+                               
+                                <div class="form-group col-md-6 ld grp3">
+                                    <label for="exampleInputEmail1">End Date</label>
+                                    <input type="date" class="form-control"  class="form-control" name="endDate"  id="endDate" [(ngModel)]="formData.endDate" #endDate="ngModel" required>
+                                
+                            </div> 
+                               
+                               
+                                <!-- <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" [(ngModel)]="updateUser.password"
+                                        name="password" id="password" placeholder="Password">
+                                </div> -->
+                                <div class="form-group col-md-6 grp3">
+                                    <label for="exampleInputEmail1">Total Date</label>
+                                    <input type="number" class="form-control" name="total"  id="total" [(ngModel)]="formData.total" #total="ngModel" required>
+                                </div>
+                                <div class="form-group col-md-6 grp3">
+                                    <label for="exampleInputEmail1">Remarks</label>
+                                    <input type="text" class="form-control"  class="form-control" name="remarks"  id="remarks" [(ngModel)]="formData.remarks" #remarks="ngModel" required>
+                                </div>
+                            
+                               
+                                <div class="buttons">
+                                    <input type="submit" class="btn btn-success"  value="Apply" (click)="submit=true" [disabled]="this.loading" >
+                                    
+                                    <a class="btn btn-secondary ml-2 "role="button" (click)="formGroup.reset()">Clear</a>
+                                </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+   
+</div>
+<app-footer></app-footer>

@@ -1,16 +1,17 @@
-<app-dashboard></app-dashboard>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
 <div class="content-wrapper">
 
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>General Form</h1>
+                    <h1>You can edit their details here..</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">General Form</li>
+                        <li class="breadcrumb-item active">Edit Form</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +26,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="card card-dark">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Edit Form</h3>
                         </div>
                         <form class="row g-3 pl-5 pr-5 pt-3 pb-3" #updateForm="ngForm" (ngSubmit)="update()">
                             
@@ -61,7 +62,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Role</label>
                                     <!-- <input type="text" class="form-control" [(ngModel)]="updateUser.role[0].roleName" name="roleName" id="roleName" placeholder="Enter Role"> -->
-                                    <select class="form-control"  name="roleName" id="roleName" (change)="changeRole($event)" >
+                                    <select class="form-control"  name="roleName" id="roleName" (change)="changeRole($event)" [disabled]="!(userRole=='Super Admin')">
                                         <!-- <option value="" selected>{{updateUser.role[0].roleName}}</option>  -->
                                         <option [value]="roles.roleName" *ngFor="let roles of allRoles"  [selected]="updateUser.role[0].roleName==roles.roleName">{{roles.roleName}}</option> 
                                     </select>
@@ -74,7 +75,6 @@
                                     <a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button">Previous</a>
                                     <button type="submit" class="btn btn-success ml-2" >Submit</button>
                                 </div>
-                            
                         </form>
                     </div>
                 </div>
@@ -82,12 +82,14 @@
         </div>
     </section>
 </div>
-<footer class="main-footer">
+<app-footer></app-footer>
+<!-- <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
     <b>Version</b> 3.2.0
     </div>
     <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
-    </footer>
+    </footer> -->
     
  
 <router-outlet></router-outlet>
+

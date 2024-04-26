@@ -5,10 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListuserComponent } from './listuser/listuser.component';
-import { AdminComponent } from './admin/admin.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { authGuard } from './auth/auth.guard';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { LeavepageComponent } from './leavepage/leavepage.component';
+import { ViewleavepageComponent } from './viewleavepage/viewleavepage.component';
+import { EditpageComponent } from './editpage/editpage.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 const routes: Routes = [
@@ -16,11 +21,15 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'dashboard',component:DashboardComponent},
-  {path:'listuser',component:ListuserComponent},
-  {path:'admin/:id',component:AdminComponent},
-  {path:'change-password/:id',component:ChangePasswordComponent},
+  {path:'listuser',component:ListuserComponent,canActivate:[authGuard],data:{roles:['Super Admin','Admin']}},
+  {path:'edit/:id',component:EditpageComponent,canActivate:[authGuard],data:{roles:['Super Admin','Admin']}},
+  {path:'change-password/:id',component:ChangePasswordComponent,canActivate:[authGuard],data:{roles:['Super Admin','Admin']}},
   {path:'invoice',component:InvoiceComponent},
-  {path:'admindashboard',component:AdmindashboardComponent,}
+  {path:'forbidden',component:ForbiddenComponent},
+  {path:'adduser',component:AddUserComponent},
+  {path:'leavepage',component:LeavepageComponent},
+  {path:'viewleavepage',component:ViewleavepageComponent},
+  {path:'admindashboard',component:AdmindashboardComponent,canActivate:[authGuard],data:{roles:['Super Admin']}}
 ];
 
 @NgModule({

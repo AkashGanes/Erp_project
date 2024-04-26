@@ -1,0 +1,109 @@
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+
+    <section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+    <div class="col-sm-6">
+    <h1>Leave Application List</h1>
+    </div>
+    <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right"> 
+    
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="" routerLink="/leavepage">Application Form</a></li>
+    </ol>
+    </div>
+    </div>
+    </div>
+    </section>
+    
+    
+    <section class="content">
+    <div class="container-fluid  shadow-lg p-3 mb-5 bg-body rounded">
+    
+    
+    <div class="row">
+    <div class="col-12">
+    <div class="card">
+    <div class="card-header">
+    <!--<h3 class="card-title">Responsive Hover Table</h3>-->
+    <div class="card-tools">
+    <div class="input-group input-group-sm" style="width: 150px;">
+    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+    <div class="input-group-append">
+    <button type="submit" class="btn btn-default">
+    <i class="fas fa-search"></i>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    <div class="card-body">
+    <table class="table table-hover text-nowrap" >
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Employee Name</th>
+      
+        <th scope="col">Leave Type</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Total Date</th>
+        <th scope="col">Remark</th>
+    </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="this.loginService.roleMatch(['Super Admin','Admin','HR']);then allDetails;else userOnly">
+
+      </ng-container>
+  
+      <ng-template #allDetails>
+        <tr *ngFor="let leave of allLeaves | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+          <td>{{leave.id}}</td>
+          <td>{{leave.userName}}</td>
+          <td>{{leave.leaveform[leave.leaveform.length-1].leaveType}}</td>
+          <td>{{leave.leaveform[leave.leaveform.length-1].startDate}}</td>
+          <td>{{leave.leaveform[leave.leaveform.length-1].endDate}}</td>
+          <td>{{leave.leaveform[leave.leaveform.length-1].total}}</td>
+          <td>{{leave.leaveform[leave.leaveform.length-1].remarks}}</td>
+        </tr>
+      </ng-template>
+      
+      <ng-template #userOnly>
+        <tr>
+          <td>{{noramlUser.id}}</td>
+          <td>{{noramlUser.userName}}</td>
+          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].leaveType}}</td>
+          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].startDate}}</td>
+          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].endDate}}</td>
+          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].total}}</td>
+          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].remarks}}</td>
+        </tr>
+      </ng-template>
+
+    </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+</div>
+
+  <pagination-controls (pageChange)="currentPage = $event" ></pagination-controls>
+</div>
+
+</section>
+</div>
+
+<!-- <footer class="main-footer">
+<div class="float-right d-none d-sm-block">
+<b>Version</b> 3.2.0
+</div>
+<strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+</footer> -->
+<app-footer></app-footer>
+

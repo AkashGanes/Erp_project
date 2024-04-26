@@ -8,6 +8,8 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.ash.LoginSignUp.dto.LoginPage;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,7 +19,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtUtil {
 
 	
-	 private static final String SECRET_KEY = "learn_programming_yourself";
+	 private static final String SECRET_KEY = "my_secret_code";
 
 	    private static final int TOKEN_VALIDITY = 3600 * 5;
 
@@ -48,15 +50,19 @@ public class JwtUtil {
 	        return getClaimFromToken(token, Claims::getExpiration);
 	    }
 
-	    public String generateToken(UserDetails userDetails) {
+	    public String generateToken(UserDetails userDetails,LoginPage user) {
 
-	        Map<String, Object> claims = new HashMap<>();
+//	        Map<String, Object> claims = new HashMap<>();
+	        
+	        Claims claims=Jwts.claims();
+	        claims.put("user_id", user.getId());
 
 	        return Jwts.builder()
 	                .setClaims(claims)
 	                .setSubject(userDetails.getUsername())
 	                .setIssuedAt(new Date(System.currentTimeMillis()))
 	                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY * 1000))
+	                
 	                .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
 	                .compact();
 	    }

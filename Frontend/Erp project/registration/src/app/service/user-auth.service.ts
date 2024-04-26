@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+
 
 
 @Injectable({
@@ -7,23 +10,37 @@ import { Injectable } from '@angular/core';
 export class UserAuthService {
   
 
-  constructor() { }
-  
+  constructor(@Inject(PLATFORM_ID) private platformId:object) { }
+  roles:any
+  jwtToken:any
+  userId!:number
+  decodedToken:any
+
   public setRoles(roles: []) {
-    localStorage.setItem('roles', JSON.stringify(roles));
+    if(isPlatformBrowser(this.platformId)){
+      localStorage.setItem('roles', JSON.stringify(roles))
+    }
+     
   }
-
-  public getRoles(): [] {
-    let data:any=localStorage.getItem('roles')
-    return JSON.parse(data);
-  }
-
   public setToken(jwtToken: string) {
-    localStorage.setItem('jwtToken', jwtToken);
+    if(isPlatformBrowser(this.platformId)){
+      localStorage.setItem('jwtToken', jwtToken)
+    } 
+  }
+
+  public getRoles() {
+    if(isPlatformBrowser(this.platformId)){
+      let data:any=localStorage.getItem('roles')
+      this.roles=JSON.parse(data)
+      return this.roles;
+    }
   }
 
   public getToken() {
-    return localStorage.getItem('jwtToken');
+    if(isPlatformBrowser(this.platformId)){
+      this.jwtToken=localStorage.getItem('jwtToken');
+    return this.jwtToken
+    }
   }
 
   public clear() {
@@ -34,4 +51,10 @@ export class UserAuthService {
     return this.getRoles() && this.getToken();
   }
 
+  public decodeToken():any{
+    if(this.getToken()!=null){
+      return jwtDecode<JwtPayload>(this.getToken());
+      
+    } 
+  }
 }

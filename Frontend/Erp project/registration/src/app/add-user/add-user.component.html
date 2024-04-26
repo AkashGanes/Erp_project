@@ -1,0 +1,87 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>You can add members here..</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Add Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="d-flex justify-content-end mb-3 mr-3"><a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></div> -->
+
+    <section class="content ">
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row ">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">Add User</h3>
+                        </div>
+                        <form class="row g-3 pl-5 pr-5 pt-3 pb-3" #updateForm="ngForm" (ngSubmit)="updateForm.form.valid && addUser()">
+                            
+                              
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">UserName</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.userName" name="userName" id="userName" placeholder="Enter FirstName" required="">
+                                </div>
+                                <!-- <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">MiddleName</label>
+                                    <input type="text" class="form-control" [(ngModel)]="updateUser.middleName" name="middleName" id="middleName" placeholder="Enter MiddleName">
+                                </div> -->
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">LastName</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" id="lastName" placeholder="Enter LastName" required="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email"  class="form-control" [(ngModel)]="user.email" name="email" id="email" placeholder="Enter Email" required="">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" [(ngModel)]="updateUser.password"
+                                        name="password" id="password" placeholder="Password">
+                                </div> -->
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">PhoneNumber</label>
+                                    <input type="number" class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter PhoneNumber" required="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Role</label>
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="updateUser.role[0].roleName" name="roleName" id="roleName" placeholder="Enter Role"> -->
+                                    <select class="form-control"  name="roleName" id="roleName" (change)="changeRole($event)" >
+                                        <option value="" selected>--Select The Role--</option> 
+                                        <option [value]="roles.roleName" *ngFor="let roles of allRoles">{{roles.roleName}}</option> 
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Enter Password" required="">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <div class="">
+                                    <a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button">Previous</a>
+                                    <button type="submit" class="btn btn-success ml-2" >Submit</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer></app-footer>

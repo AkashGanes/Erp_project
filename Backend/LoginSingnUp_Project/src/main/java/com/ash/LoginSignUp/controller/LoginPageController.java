@@ -2,8 +2,9 @@ package com.ash.LoginSignUp.controller;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ash.LoginSignUp.dao.JwtService;
 import com.ash.LoginSignUp.dao.LoginPageDao;
 import com.ash.LoginSignUp.dto.LoginPage;
+import com.ash.LoginSignUp.enity.JwtRequest;
+import com.ash.LoginSignUp.enity.JwtResponse;
+import com.ash.LoginSignUp.enity.ResponseStructure;
 
 @RestController
 @CrossOrigin
@@ -23,17 +28,36 @@ public class LoginPageController {
 
 	@Autowired
 	private LoginPageDao dao;
-
+	
+	
+	@Autowired
+	private JwtService jwtService;
+	
 	@PostMapping("save")
-	public String saveDetails(@RequestBody LoginPage l) {
-		String msg = "";
+	public ResponseStructure<JwtResponse> saveDetails(@RequestBody LoginPage l) throws Exception {
+		ResponseStructure<JwtResponse> response=new ResponseStructure<>();
+		String password=l.getPassword();
+		
 		if (dao.checkDuplicate(l.getEmail()) == 0) {
-			dao.saveDetails(l);
-			msg = "registered sucessfully";
+			
+		LoginPage user=	dao.saveDetails(l);
+		JwtRequest jwtReq=new JwtRequest();
+		jwtReq.setEmail(user.getEmail());
+		jwtReq.setPassword(password);
+		
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("successfully registered");
+		response.setData(jwtService.createJwtToken(jwtReq));
+		 return response ;
+		
+//			msg = "registered sucessfully";
 		} else {
-			msg = "email already exist";
+//			msg = "email already exist";
+			response.setStatus(HttpStatus.FAILED_DEPENDENCY.value());
+			response.setMessage("email already exists");
+			return response;
 		}
-		return msg;
+		
 	}
 
 	@GetMapping("get/{email}/{password}")

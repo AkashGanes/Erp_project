@@ -13,17 +13,19 @@ export class LoginComponent {
 
   constructor(private loginService:LoginSignupService ,public router:Router,public userAuthService:UserAuthService){}
   ngOnInit(): void {
-  
+   this.loginService.canAuthenticate()
+  this.loginService.getAllRoles().subscribe((resp)=>{
+    this.roles=resp
+  })
   }
   loginData={
     email:"",
     password:""
-
   }
+  roles!:any
   public user={
     id:"",
-    firstName:"",
-    middleName:"",
+    userName:"",
     lastName:"",
     email:"",
     phoneNumber:""
@@ -34,20 +36,32 @@ export class LoginComponent {
 
   onSubmit(formGroup:any){
 
+    this.loading=true
     this.loginService.get(this.loginData).subscribe((resp:any)=>{
-
+      console.log(resp)
+      console.log(this.roles)
       this.userAuthService.setRoles(resp.loginPage.role);
       this.userAuthService.setToken(resp.jwtToken);
 
       const role = resp.loginPage.role[0].roleName;
-      if (role == 'Super Admin') {
-        alert("login succesfully")
-        this.router.navigate(['/listuser']);
-      } else if (role=='HR'){
-        this.router.navigate(['/listuser'])
-      }else{
-        
+
+    for(let i=0; i<this.roles.length; i++){
+      if(role==this.roles[i].roleName){
+        if (role == 'Super Admin') {
+          alert("login succesfully")
+          this.router.navigate(['/dashboard']);
+        } else if (role=='HR'){
+          alert("login succesfully")
+          this.router.navigate(['/dashboard'])
+        }else if(role=='Admin'){
+          alert("login succesfully")
+          this.router.navigate(['/dashboard'])
+        }else{
+          alert("login succesfully")
+          this.router.navigate(['/dashboard'])
+        }
       }
+    }
       // if(resp!=null){
       // //  this.user=resp
       //     alert("login succesfully")
@@ -67,8 +81,8 @@ export class LoginComponent {
       this.loading=false
       alert("user not found")
     })
-    this.loading=true
 
+    // this.loading=true
   //  this.loginService.get().subscribe(resp=>{
   //   const user=resp.find((a:any)=>{
   //     return a.email==formGroup.value.email && a.password==formGroup.value.password

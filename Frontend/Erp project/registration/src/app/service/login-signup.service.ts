@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAuthService } from './user-auth.service';
 
@@ -7,7 +7,14 @@ import { UserAuthService } from './user-auth.service';
 @Injectable({
   providedIn: 'root'
 })
+@Component({
+  template: 'The href is: {{href}}'
+  /*
+  Other component settings
+  */
+})
 export class LoginSignupService {
+href: any;
 
   constructor(private router:Router,private http:HttpClient,private userAuthService:UserAuthService) { }
 
@@ -28,21 +35,41 @@ export class LoginSignupService {
   //   }
   //   else return false
   // }
-  isAuthenticated=false
+  // isAuthenticated=false
  
   
+  // canAccess(){
+  //   if(!this.isAuthenticated){
+  //     this.router.navigate(['/login'])
+  //   }
+  // }
+  // canAuthenticate(){
+  //   if(this.isAuthenticated){
+  //     this.router.navigate(['/dashboard'])
+  //   }
+  // }
+  isAuthenticated():boolean{
+    if (this.userAuthService.getToken()!=null) {
+        return true;
+    }
+    return false;
+  }
+
   canAccess(){
-    if(!this.isAuthenticated){
-      this.router.navigate(['/login'])
+    if (!this.isAuthenticated()) {
+        //redirect to login
+        this.router.navigate(['/login']);
     }
   }
   canAuthenticate(){
-    if(this.isAuthenticated){
-      this.router.navigate(['/dashboard'])
+    if (this.isAuthenticated()) {
+      //redirect to dashboard
+      this.router.navigate(['/dashboard']);
     }
   }
+
   save(data:any){
-    return this.http.post(this.API+"save",data,{responseType:'text'})
+    return this.http.post(this.API+"save",data,{headers:this.requestHeader})
      
   }
   get(loginData:any){
@@ -64,33 +91,38 @@ export class LoginSignupService {
     return this.http.delete(this.API+'delete/'+id, {responseType:'text'})
   }
   logOut(){
-    this.loginuser=null
-    this.signinuser=null
-    this.isAuthenticated=false
+  this.userAuthService.clear()
   }
 
   getAllRoles(){
     return this.http.get(this.API+'getAllRoles')
   }
 
+  saveLeaveForm(data:any,id:number){
+    return this.http.post(this.API+"saveLeave/"+id,data)
+  }
    roleMatch(allowedRoles:any):boolean {
     let isMatch = false;
-    const userRoles: any = this.userAuthService.getRoles();
+    const userRoles:any = this.userAuthService.getRoles();
 
-    if (userRoles != null && userRoles) {
+    if (userRoles != null) {
       for (let i = 0; i < userRoles.length; i++) {
         for (let j = 0; j < allowedRoles.length; j++) {
           if (userRoles[i].roleName === allowedRoles[j]) {
             isMatch = true;
             return isMatch;
-          } else {
-            return isMatch;
-          }
+          } 
         }
       }
     }
     return isMatch
   }
 
+  getLeaveDetails(){
+    return this.http.get(this.API+"getLeaveData")
+  }
+  getLeaveDetailsById(id:number){
+    return this.http.get(this.API+"getLeaveDetails/"+id)
 
+  }
 }

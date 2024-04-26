@@ -8,7 +8,6 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AdminComponent } from './admin/admin.component';
 import { ListuserComponent } from './listuser/listuser.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +16,15 @@ import { LoginSignupService } from './service/login-signup.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
+import { LeavepageComponent } from './leavepage/leavepage.component';
+import { ViewleavepageComponent } from './viewleavepage/viewleavepage.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { EditpageComponent } from './editpage/editpage.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 
@@ -31,11 +39,18 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    AdminComponent,
     ListuserComponent,
     ChangePasswordComponent,
     InvoiceComponent,
-    AdmindashboardComponent
+    AdmindashboardComponent,
+    ForbiddenComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+    LeavepageComponent,
+    ViewleavepageComponent,
+    EditpageComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +58,11 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
-    provideClientHydration(),LoginSignupService,AdminComponent,LoginComponent
+    provideClientHydration(),LoginSignupService,LoginComponent
   ],
   bootstrap: [AppComponent]
 })

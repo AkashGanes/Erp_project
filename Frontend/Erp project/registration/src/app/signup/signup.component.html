@@ -6,19 +6,19 @@
              <h2 class="text-center">Register Now</h2>
              <form class="register-form" action="" #formGroup="ngForm" (ngSubmit)="formGroup.form.valid && onSubmit(formGroup)">
               <div class="form-group">
-                <label for="exampleInputEmail1" class="text-uppercase mb-2">FirstName</label>
-                <input type="text" class="form-control" name="firstName"  id="firstName" [(ngModel)]="formData.firstName" #firstName="ngModel" required >
-                <span class="text-danger" *ngIf="this.submit && firstName.errors?.['required'] ">
+                <label for="exampleInputEmail1" class="text-uppercase mb-2">UserName</label>
+                <input type="text" class="form-control" name="userName"  id="userName" [(ngModel)]="formData.userName" #userName="ngModel" required >
+                <span class="text-danger" *ngIf="this.submit && userName.errors?.['required'] ">
                     Name is required.
                 </span>
              </div>
-             <div class="form-group">
+             <!-- <div class="form-group">
               <label for="exampleInputEmail1" class="text-uppercase mb-2">MiddleName</label>
               <input type="text" class="form-control" name="middleName"  id="middleName" [(ngModel)]="formData.middleName"  #middleName="ngModel" required>
               <span class="text-danger" *ngIf="this.submit && middleName.errors?.['required'] ">
                   Optional
               </span>
-           </div>
+           </div> -->
              <div class="form-group">
               <label for="exampleInputEmail1" class="text-uppercase mb-2">LastName</label>
               <input type="text" class="form-control" name="lastName"  id="lastName" [(ngModel)]="formData.lastName"  #lastName="ngModel" required>
@@ -37,7 +37,7 @@
              </div>
              <div class="form-group">
                 <label for="exampleInputPassword1" class="text-uppercase mb-2">Password</label>
-                <input  class="form-control" type="password"  name="password" id="password" [(ngModel)]="formData.password" #password="ngModel" required minlength="8">
+                <input  class="form-control" type="text"  name="password" id="password" [(ngModel)]="formData.password" #password="ngModel" required minlength="8">
                 <span class="text-danger" *ngIf="this.submit && password.errors?.['required'] ">
                     Password is required.
                 </span>
@@ -45,6 +45,16 @@
                   Minimum length of password is 8 characters
               </span>
              </div>
+             <!-- <div class="form-group">
+               <label for="exampleInputPassword1" class="text-uppercase mb-2">Confirm Password</label>
+               <input  class="form-control" type="text"  name="confirmPassword" id="confirmPassword" [(ngModel)]="formData.confirmPassword" #confirmPassword="ngModel" required="password.value==confirmPassword.value" >
+               <span class="text-danger" *ngIf="this.submit && confirmPassword.errors?.['required'] ">
+                  Confirm Password is required.
+               </span>
+             <span class="text-danger" *ngIf="password.value!=confirmPassword.value && confirmPassword.touched">
+               Missmatched password
+           </span>
+            </div> -->
              <div class="form-group">
               <label for="exampleInputEmail1" class="text-uppercase mb-2">PhoneNumber</label>
               <input type="text" class="form-control" name="phoneNumber"  id="phoneNumber" [(ngModel)]="formData.phoneNumber" #phoneNumber="ngModel" required >
@@ -55,7 +65,7 @@
              <div class="form-group">
   
                 <span class="text-danger" *ngIf="this.errorMessage">
-                   <p>Custom error message!</p>
+                   <p [innerHTML]="this.errorMessage"></p>
                 </span>
                 <div  class="text-center" *ngIf="this.loading">
                   <div class="spinner-border text-primary mt-3" role="status">

@@ -38,11 +38,14 @@ public class JwtService implements UserDetailsService {
         String userEmail = jwtRequest.getEmail();
         String userPassword = jwtRequest.getPassword();
         authenticate(userEmail,userPassword);
-
-        UserDetails userDetails = loadUserByUsername(userEmail);
-        String newGeneratedToken = jwtUtil.generateToken(userDetails);
-
+        
         LoginPage user = repo.findByEmail(userEmail);
+
+        
+        UserDetails userDetails = loadUserByUsername(userEmail);
+        String newGeneratedToken = jwtUtil.generateToken(userDetails,user);
+
+        
         return new JwtResponse(user, newGeneratedToken);
     }
 
