@@ -25,6 +25,12 @@ import { ViewleavepageComponent } from './viewleavepage/viewleavepage.component'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditpageComponent } from './editpage/editpage.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { Ng2SearchPipeModule } from '@ngx-maintenance/ng2-search-filter';
+import { HolidayComponent } from './holiday/holiday.component';
+import { HolidayPageComponent } from './holiday-page/holiday-page.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+
 
 
 
@@ -50,7 +56,11 @@ import { AddUserComponent } from './add-user/add-user.component';
     LeavepageComponent,
     ViewleavepageComponent,
     EditpageComponent,
-    AddUserComponent
+    AddUserComponent,
+    HolidayComponent,
+    HolidayPageComponent,
+    AttendanceComponent,
+    AttendanceListComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +69,8 @@ import { AddUserComponent } from './add-user/add-user.component';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     provideClientHydration(),LoginSignupService,LoginComponent

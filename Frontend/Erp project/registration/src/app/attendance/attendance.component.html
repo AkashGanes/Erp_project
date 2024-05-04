@@ -1,0 +1,209 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+<div class="col-sm-6">
+<h1>Attendance Table</h1>
+</div>
+<div class="col-sm-6">
+<ol class="breadcrumb float-sm-right">
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0);" routerLink="/attendancelist">Attendance List</a></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="content">
+<div class="container-fluid  shadow-lg p-3 mb-5 bg-body rounded">
+
+
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+  <form (ngSubmit)="clockInOut()" >
+  <button type="submit" class="btn btn-primary"  >{{attendance.inTime? (attendance.outTime? 'Submit' : 'Clock Out') : 'Clock In' }}</button>
+</form>
+
+<div class="card-tools">
+<!-- <div class="input-group input-group-sm" style="width: 150px;">
+<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+<div class="input-group-append">
+<button type="submit" class="btn btn-default">
+<i class="fas fa-search"></i>
+</button>
+</div>
+</div> -->
+</div>
+</div>
+
+<div class="card-body col-sm-6 col-md-12 "  style="overflow-x: auto">
+<table class="table table-hover text-nowrap">
+<thead>
+<tr>
+    <th>Date</th>
+    <th>In Time</th>
+    <th>Out Time</th>
+    <th>Total Hours</th>
+    <th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr >
+  <td>{{ attendance.date }}</td>
+  <td>{{ attendance.inTime }}</td>
+  <td >{{ attendance.outTime }}</td>
+  <td >{{ attendance.totalHours }}</td>
+  <!-- <td>
+    <div>
+        <textarea  name="status" id="" cols="25" rows="2" placeholder=" Today Work Status.." [(ngModel)]="attendance.status" ></textarea>
+    </div></td> -->
+  <td>
+    <div class="form-group">
+      <textarea class="form-control" name="status" cols="5" rows="2" placeholder="Today's Work Status.." [(ngModel)]="attendance.status" #status="ngModel" required></textarea>
+      <span class="text-danger" *ngIf="this.submit && status.errors?.['required']">
+          Your today's status is required.
+      </span>
+  </div>
+  
+      
+    
+  </td>
+  
+
+  
+
+  <!-- <td class="d-flex align-items-center ">
+   <a href="javascript:void(0);" routerLink="/admin" class="nav-link text-dark" ><i class="fas fa-edit" ></i></a>
+    <a href="" class="nav-link text-dark"><i class="fa fa-trash"></i></a>
+  </td> -->
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</section>
+</div>
+<footer class="main-footer">
+<div class="float-right d-none d-sm-block">
+<b>Version</b> 3.2.0
+</div>
+<strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+</footer>
+
+<!-- 
+  
+  <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content ">   
+              <div class="modal-body p-0">
+                  <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                      <div class="card-header pb-0 bg-white border-0 "><div class="row"><div class="col ml-auto"><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div> </div>
+                      <p class="font-weight-bold mb-2"> Are you sure you wanna delete this ?</p><p class="text-muted "> This data will be deleted permenantly.</p>     </div>
+                      <div class="card-body px-sm-4 mb-2 pt-1 pb-0"> 
+                          <div class="row justify-content-end no-gutters"><div class="col-auto"><button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button></div><div class="col-auto"><button type="button" class="btn btn-danger px-4" data-dismiss="modal">Delete</button></div></div>
+                      </div>
+                  </div>  
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  <app-dashboard></app-dashboard>
+  <div class="content-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <h3 class="card-title">Attendance Form</h3>
+          <div class="card-body">
+            <form (ngSubmit)="clockInOut()">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" [(ngModel)]="fullName" name="fullName" required>
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" [(ngModel)]="date" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="time">Time</label>
+                <input type="text" class="form-control" id="time" [(ngModel)]="inTime" name="time" [readonly]="clockedIn" required>
+              </div>
+              <button type="submit" class="btn btn-primary">{{ clockedIn ? 'Clock Out' : 'Clock In' }}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <h3 class="card-title">Attendance Table</h3>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full Name</th>
+                  <th>Date</th>
+                  <th>In Time</th>
+                  <th>Out Time</th>
+                  <th>Total Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>{{ fullName }}</td>
+                  <td>{{ date }}</td>
+                  <td>{{ inTime }}</td>
+                  <td>{{ outTime }}</td>
+                  <td>{{ totalTime }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+    <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+    </footer>-->
+

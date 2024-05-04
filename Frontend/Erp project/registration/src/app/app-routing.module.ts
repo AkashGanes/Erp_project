@@ -14,6 +14,10 @@ import { LeavepageComponent } from './leavepage/leavepage.component';
 import { ViewleavepageComponent } from './viewleavepage/viewleavepage.component';
 import { EditpageComponent } from './editpage/editpage.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { HolidayComponent } from './holiday/holiday.component';
+import { HolidayPageComponent } from './holiday-page/holiday-page.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { AttendanceListComponent } from './attendance-list/attendance-list.component';
 
 
 const routes: Routes = [
@@ -29,6 +33,10 @@ const routes: Routes = [
   {path:'adduser',component:AddUserComponent},
   {path:'leavepage',component:LeavepageComponent},
   {path:'viewleavepage',component:ViewleavepageComponent},
+  {path:'holiday',component:HolidayComponent},
+  {path:'holidaypage',component:HolidayPageComponent},
+  {path:'attendance',component:AttendanceComponent},
+  {path:'attendancelist',component:AttendanceListComponent},
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[authGuard],data:{roles:['Super Admin']}}
 ];
 

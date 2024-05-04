@@ -9,6 +9,8 @@
       <span class="brand-text font-weight-light">NPS</span>
     </a>
 
+
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -71,7 +73,7 @@
               </li> -->
               <li class="nav-item menu">
                 <a href="#" class="nav-link active"  *ngIf="this.auth.roleMatch(['Super Admin','Admin'])">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="fas fa-users nav-icon"></i>
                 <p>
                 User Management
                 <i class="right fas fa-angle-left"></i>
@@ -109,21 +111,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="" class="nav-link"  routerLink="/leavepage" routerLinkActive="active">
+                      <a href="" class="nav-link"  routerLink="/viewleavepage" routerLinkActive="active">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Apply Leave</p>
+                        <p>List leave</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link"  routerLink="">
+                      <a href="" class="nav-link"  routerLink="/attendance"  routerLinkActive="active">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Attendance</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link"  routerLink="">
+                      <a href="" class="nav-link"  routerLink="/holiday" routerLinkActive="active">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Holiday</p>
+                        <p>Holiday List</p>
                       </a>
                     </li>
                     </ul>

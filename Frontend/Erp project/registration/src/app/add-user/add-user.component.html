@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Add Form</li>
+                        <li class="breadcrumb-item active"><a routerLink="/listuser">View Users</a></li>
                     </ol>
                 </div>
             </div>
@@ -28,12 +28,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Add User</h3>
                         </div>
-                        <form class="row g-3 pl-5 pr-5 pt-3 pb-3" #updateForm="ngForm" (ngSubmit)="updateForm.form.valid && addUser()">
+                        <form class="row g-3 pl-5 pr-5 pt-3 pb-3" #userForm="ngForm" (ngSubmit)="userForm.form.valid && addUser()">
                             
                               
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">UserName</label>
-                                    <input type="text" class="form-control" [(ngModel)]="user.userName" name="userName" id="userName" placeholder="Enter FirstName" required="">
+                                    <input type="text" class="form-control" [(ngModel)]="user.userName" name="userName" id="userName" placeholder="Enter FirstName" #userName="ngModel" required="">
+                                    <span class="text-danger" *ngIf="this.submit && userName.errors?.['required'] ">
+                                        Name is required.
+                                    </span>
                                 </div>
                                 <!-- <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">MiddleName</label>
@@ -41,11 +44,17 @@
                                 </div> -->
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">LastName</label>
-                                    <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" id="lastName" placeholder="Enter LastName" required="">
+                                    <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" id="lastName" placeholder="Enter LastName" #lastName="ngModel" required="">
+                                    <!-- <span class="text-danger" *ngIf="this.submit && lastName.errors?.['required'] ">
+                                        Last Name is required.
+                                    </span> -->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email"  class="form-control" [(ngModel)]="user.email" name="email" id="email" placeholder="Enter Email" required="">
+                                    <input type="email"  class="form-control" [(ngModel)]="user.email" name="email" id="email" placeholder="Enter Email" #email="ngModel" required="">
+                                    <span class="text-danger" *ngIf="this.submit && email.errors?.['required'] ">
+                                        Email is required.
+                                    </span>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
@@ -54,28 +63,39 @@
                                 </div> -->
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">PhoneNumber</label>
-                                    <input type="number" class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter PhoneNumber" required="">
+                                    <input type="number" class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter PhoneNumber" #phoneNumber="ngModel" required>
+                                    <span class="text-danger" *ngIf="this.submit && phoneNumber.errors?.['required'] ">
+                                        PhoneNumber is required.
+                                    </span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Role</label>
                                     <!-- <input type="text" class="form-control" [(ngModel)]="updateUser.role[0].roleName" name="roleName" id="roleName" placeholder="Enter Role"> -->
-                                    <select class="form-control"  name="roleName" id="roleName" (change)="changeRole($event)" >
+                                    <select class="form-control"  name="roleName" id="roleName" (change)="changeRole($event)" [(ngModel)]="selectedRole" required #role="ngModel">
                                         <option value="" selected>--Select The Role--</option> 
                                         <option [value]="roles.roleName" *ngFor="let roles of allRoles">{{roles.roleName}}</option> 
                                         
                                     </select>
+                                    <span class="text-danger" *ngIf="this.submit && role.errors?.['required']">
+                                        Role is required.
+                                    </span>
+                                   
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Password</label>
-                                    <input type="text" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Enter Password" required="">
+                                    <input type="text" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Enter Password" required #password="ngModel">
+                                    <span class="text-danger" *ngIf="this.submit && password.errors?.['required'] ">
+                                        Password is required.
+                                    </span>
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                 </div>
                                 <div class="">
-                                    <a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button">Previous</a>
-                                    <button type="submit" class="btn btn-success ml-2" >Submit</button>
+                                    <button type="submit" class="btn btn-success ml" (click)="submit=true" >Submit</button>
+                                    <a class="btn btn-secondary ml-2 "role="button" (click)="userForm.reset()">Clear</a>
+                                    
                                 </div>
                         </form>
                     </div>

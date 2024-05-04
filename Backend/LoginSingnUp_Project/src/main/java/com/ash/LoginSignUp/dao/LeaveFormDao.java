@@ -81,5 +81,9 @@ public class LeaveFormDao {
 		
 		return ul.findAll();
 	}
+	public String deleteLeave(int id) {
+		ul.deleteById(id);
+		return "Successfully deleted";
+	}
 
 }

@@ -125,4 +125,31 @@ href: any;
     return this.http.get(this.API+"getLeaveDetails/"+id)
 
   }
+  deleteLeave(id:number){
+    return this.http.delete(this.API+"deleteLeave/"+id,{responseType:'text'})
+  }
+
+  
+
+  saveHoliday(data:any){
+    return this.http.post(this.API+"saveDay",data)
+   }
+   getHoliday(){
+   return this.http.get<any>(this.API+"getHoliday")
+   }
+
+   saveAttendance(data:any,id:any){
+    return this.http.post(this.API+"saveAttendance/"+id ,data)
+    
+  }
+  getAllAttendance(){
+    return this.http.get<any>(this.API+"getAllAttendance")
+  }
+
+  getAttendanceById(id:number){
+    return this.http.get(this.API+"getAttendanceById/"+id)
+  }
+  deleteAttendace(id:number){
+    return this.http.delete(this.API+"deleteAttendance/"+id,{responseType:'text'})
+  }
 }

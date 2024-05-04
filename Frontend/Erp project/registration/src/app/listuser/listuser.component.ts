@@ -13,6 +13,8 @@ export class ListuserComponent {
     this.getAll()
   }
 
+  index=1
+  searchText=''
   currentPage: number = 1;
   updateUser={
     id:"",

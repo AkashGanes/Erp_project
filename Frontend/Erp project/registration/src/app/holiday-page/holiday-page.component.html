@@ -1,0 +1,75 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add Holiday Leave</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item"><a routerLink="/holiday">View Holidays</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="d-flex justify-content-end mb-3 mr-3"><a class="btn btn-primary " href="javascript:void(0);" routerLink="/listuser" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></div> -->
+
+    <section class="content ">
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row ">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">Add Form</h3>
+                        </div>
+                        <form class="row g-3 pl-5 pr-5 pt-3 pb-5" action="" #formGroup="ngForm" (ngSubmit)="formGroup.form.valid && onSubmit(formGroup)">
+
+                            
+                                <!-- <div class="form-group col-md-6">
+                                    <label for="employeeName" class="form-label">S.No</label>
+                                    <input type="text" class="form-control" id="sno" name="sno" [(ngModel)]="formData.id" #sno="ngModel"  required>
+                                    <span class="text-danger" *ngIf="this.submit && sno.errors?.['required']">S.No is required</span>
+                        
+                                </div> -->
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">Date</label>
+                                    <input type="date" class="form-control" name="date" [(ngModel)]="formData.date"#date="ngModel"  required>
+                                    <span class="text-danger" *ngIf="this.submit && date.errors?.['required']">Date is required</span>
+                        
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="leavetype" class="form-label">Leave</label>
+                                    <input type="text" class="form-control" name="leaveType"  id="leaveType" [(ngModel)]="formData.leaveType" #leaveType="ngModel"   required >
+                                    <span class="text-danger" *ngIf="this.submit && leaveType.errors?.['required'] ">
+                                        leavetype is required.
+                                    </span>
+                                 </div>
+                                 <div class="form-group">
+  
+                                    <span class="text-danger" *ngIf="this.errorMessage">
+                                       <p>Custom error message!</p>
+                                    </span>
+                                    <!-- <div  class="text-center" *ngIf="this.loading">
+                                      <div class="spinner-border text-primary mt-3" role="status"> 
+                                        <span class="sr-only"></span>
+                                      </div>
+                                    </div> -->
+                                <input type="submit" class="btn btn-login bg-primary bg-gradient "  value="Submit"  (click)="submit=true" >
+            
+                                <a class="btn btn-secondary ml-2" href="javascript:void(0);" role="button">Cancel</a>
+                                 </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

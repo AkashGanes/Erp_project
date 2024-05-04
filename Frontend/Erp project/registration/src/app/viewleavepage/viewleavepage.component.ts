@@ -10,6 +10,8 @@ import { jwtDecode, JwtPayload } from 'jwt-decode';
 })
 export class ViewleavepageComponent {
   allLeaves: any;
+  id!:number
+
   currentPage: number = 1; // Initialize currentPage to 1
   noramlUser:any={
     id:0,
@@ -30,6 +32,7 @@ export class ViewleavepageComponent {
    
     
   }
+
 
   ngOnInit(): void {
     if(this.loginService.roleMatch(['Super Admin','Admin','HR'])){
@@ -61,6 +64,16 @@ export class ViewleavepageComponent {
     this.loginService.getLeaveDetailsById(id).subscribe((resp:any)=>{
       this.noramlUser=resp
       console.log(this.noramlUser)
+    })
+  }
+
+  deleteCall(id:number){
+    this.id=id
+  }
+  deleteLeave(){
+    this.loginService.deleteLeave(this.id).subscribe(resp=>{
+      alert(resp)
+      this.getAny()
     })
   }
 

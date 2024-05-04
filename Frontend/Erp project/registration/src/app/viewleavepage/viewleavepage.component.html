@@ -7,7 +7,7 @@
     <div class="container-fluid">
     <div class="row mb-2">
     <div class="col-sm-6">
-    <h1>Leave Application List</h1>
+    <h1>Leave List</h1>
     </div>
     <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right"> 
@@ -21,82 +21,204 @@
     </section>
     
     
-    <section class="content">
-    <div class="container-fluid  shadow-lg p-3 mb-5 bg-body rounded">
-    
-    
-    <div class="row">
-    <div class="col-12">
-    <div class="card">
-    <div class="card-header">
-    <!--<h3 class="card-title">Responsive Hover Table</h3>-->
-    <div class="card-tools">
-    <div class="input-group input-group-sm" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-    <div class="input-group-append">
-    <button type="submit" class="btn btn-default">
-    <i class="fas fa-search"></i>
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <div class="card-body">
-    <table class="table table-hover text-nowrap" >
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Employee Name</th>
-      
-        <th scope="col">Leave Type</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Total Date</th>
-        <th scope="col">Remark</th>
-    </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngIf="this.loginService.roleMatch(['Super Admin','Admin','HR']);then allDetails;else userOnly">
 
-      </ng-container>
+<section class="content">
+  <div class="container-fluid  shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="d-flex align-items-center" *ngIf="!this.loginService.roleMatch(['Super Admin','Admin','HR'])">
+              <ul class="nav nav-pills d-flex align-items-center mb-0">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Active</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">History</a></li>
+                  <!-- <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li> -->
+              </ul>
+          </div>
+          <div class="input-group input-group-sm ml-auto" style="width: 150px;">
+              <input type="text" name="table_search" class="form-control" placeholder="Search" />
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-default">
+                      <i class="fas fa-search"></i>
+                  </button>
+              </div>
+          </div>
+      </div><!-- /.card-header -->
+        <div class="card-body col-sm-6 col-md-12 "  style="overflow-x: auto">
+          <div class="tab-content">
+            <div class="active tab-pane" id="activity" role="tabpanel">
+              <table class="table table-hover text-nowrap" >
+                <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">User Id</th>
+                  
+                    <th scope="col">Leave Type</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Total Date</th>
+                    <th scope="col">Remark</th>
+                    <th scope="col" *ngIf="this.loginService.roleMatch(['Super Admin','Admin','HR'])">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="this.loginService.roleMatch(['Super Admin','Admin','HR']);then allDetails;else userOnly">
+            
+                  </ng-container>
+              
+                  <ng-template #allDetails>
+                    <tr *ngFor="let leave of allLeaves | paginate: { itemsPerPage: 5, currentPage: currentPage };let i=index;">
+                      <td>{{i+1}}</td>
+                      <td>{{leave.userName}}</td>
+                      <td>{{leave.id}}</td>
+                      <td>{{leave.leaveform[leave.leaveform.length-1].leaveType}}</td>
+                      <td>{{leave.leaveform[leave.leaveform.length-1].startDate}}</td>
+                      <td>{{leave.leaveform[leave.leaveform.length-1].endDate}}</td>
+                      <td>{{leave.leaveform[leave.leaveform.length-1].total}}</td>
+                      <td>{{leave.leaveform[leave.leaveform.length-1].remarks}}</td>
+                      <td class="d-flex align-items-center ">
+                        <a href="#history" data-toggle="tab" class="nav-link text-dark"><i class="fas fa-eye" (click)="getById(leave.id)"></i></a>
+                        <a class="nav-link text-dark" href="#" data-toggle="modal" data-target="#delete-leave" (click)="deleteCall(leave.id)" ><i class="fa fa-trash"></i></a>
+                        
+                          <!-- <div class="btn-group ">
+                            <button type="button" class="btn btn-secondary">Actions</button>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                              <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                              <li><a class="dropdown-item" href="javascript:void(0);" routerLink="" (click)="update(details.id)">Edit</a></li>
+                              <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#my-modal" (click)="deleteCall(details.id)">Remove</a></li>
+                              <li><a class="dropdown-item" href="javascript:void(0);" routerLink="/change-password/{{details.id}}">Change Password</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                          </div> -->
+                        
+                      </td>
+                    </tr>
+                  </ng-template>
+                  
+                  <ng-template #userOnly>
+                    <tr >
+                      <td>{{1}}</td>
+                      <td>{{noramlUser.userName}}</td>
+                      <td>{{noramlUser.id}}</td>
+                      <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].leaveType}}</td>
+                      <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].startDate}}</td>
+                      <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].endDate}}</td>
+                      <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].total}}</td>
+                      <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].remarks}}</td>
+                    </tr>
+                  </ng-template>
+            
+                </tbody>
+                </table>
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="history" role="tabpanel">
+              <table class="table table-hover text-nowrap" >
+                <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <!-- <th scope="col">Employee Name</th> -->
+                  
+                    <th scope="col">Leave Type</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Total Date</th>
+                    <th scope="col">Remark</th>
+                </tr>
+                </thead>
+                <tbody>
+                  
+              
+                 
+                    <tr *ngFor="let leave of noramlUser.leaveform | paginate: { itemsPerPage: 5, currentPage: currentPage } ;let i=index;">
+                      <td>{{i+1}}</td>
+                      <!-- <td>{{leave.userName}}</td> -->
+                      <td>{{leave.leaveType}}</td>
+                      <td>{{leave.startDate}}</td>
+                      <td>{{leave.endDate}}</td>
+                      <td>{{leave.total}}</td>
+                      <td>{{leave.remarks}}</td>
+                    </tr>
+               
+                  
+                
+            
+                </tbody>
+                </table>
+               
+                <div class="" *ngIf="this.loginService.roleMatch(['Super Admin','Admin','HR'])">
+                  <a class="btn btn-primary " href="/viewleavepage"  role="button">Previous</a>
+          
+              </div>
+              
+            </div>
+            <!-- /.tab-pane -->
   
-      <ng-template #allDetails>
-        <tr *ngFor="let leave of allLeaves | paginate: { itemsPerPage: 5, currentPage: currentPage }">
-          <td>{{leave.id}}</td>
-          <td>{{leave.userName}}</td>
-          <td>{{leave.leaveform[leave.leaveform.length-1].leaveType}}</td>
-          <td>{{leave.leaveform[leave.leaveform.length-1].startDate}}</td>
-          <td>{{leave.leaveform[leave.leaveform.length-1].endDate}}</td>
-          <td>{{leave.leaveform[leave.leaveform.length-1].total}}</td>
-          <td>{{leave.leaveform[leave.leaveform.length-1].remarks}}</td>
-        </tr>
-      </ng-template>
-      
-      <ng-template #userOnly>
-        <tr>
-          <td>{{noramlUser.id}}</td>
-          <td>{{noramlUser.userName}}</td>
-          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].leaveType}}</td>
-          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].startDate}}</td>
-          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].endDate}}</td>
-          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].total}}</td>
-          <td>{{noramlUser.leaveform[noramlUser.leaveform.length-1].remarks}}</td>
-        </tr>
-      </ng-template>
-
-    </tbody>
-    </table>
-</div>
-</div>
-</div>
-
-</div>
-
-  <pagination-controls (pageChange)="currentPage = $event" ></pagination-controls>
-</div>
+            <div class="tab-pane" id="settings">
+              <!-- <form class="form-horizontal">
+                <div class="form-group row">
+                  <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-sm-2 col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                  </div>
+                </div>
+              </form> -->
+            </div>
+            <!-- /.tab-pane -->
+          </div>
+          <pagination-controls class="float-right" (pageChange)="currentPage = $event" ></pagination-controls>
+          <!-- /.tab-content -->
+        </div><!-- /.card-body -->
+        
+      </div>
+      <!-- /.card -->
+    
+    </div>
+  </div>
 
 </section>
+
 </div>
 
 <!-- <footer class="main-footer">
@@ -105,5 +227,23 @@
 </div>
 <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
 </footer> -->
-<app-footer></app-footer>
+
+<div id="delete-leave" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">   
+          <div class="modal-body p-0">
+              <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                  <div class="card-header pb-0 bg-white border-0 "><div class="row"><div class="col ml-auto"><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div> </div>
+                  <p class="font-weight-bold mb-2"> Are you sure you wanna delete this ?</p><p class="text-muted "> This user data will be deleted permenantly.</p>     </div>
+                  <div class="card-body px-sm-4 mb-2 pt-1 pb-0"> 
+                      <div class="row justify-content-end no-gutters"><div class="col-auto"><button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button></div><div class="col-auto"><button type="button" class="btn btn-danger px-4" data-dismiss="modal" (click)="deleteLeave()">Delete</button></div></div>
+                  </div>
+              </div>  
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
 

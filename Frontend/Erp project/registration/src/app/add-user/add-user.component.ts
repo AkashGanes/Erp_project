@@ -12,6 +12,7 @@ import { UserAuthService } from '../service/user-auth.service';
 export class AddUserComponent {
   public constructor(private loginService: LoginSignupService, private routing: Router, public auth: UserAuthService) { }
 
+  submit=false
   ngOnInit(): void {
 
 
@@ -37,6 +38,7 @@ export class AddUserComponent {
       console.log(resp)
     })
   }
+  selectedRole=''
   userRole: any
   id!: number
   data: any;
@@ -46,7 +48,7 @@ export class AddUserComponent {
     lastName: "",
     email: "",
     password:"",
-    phoneNumber: 0,
+    phoneNumber:0,
     role: [
       {
         roleName: "Employee",
@@ -72,5 +74,6 @@ addUser() {
     this.user.role[0].roleName = e.target.value
     console.log(e.target.value)
     console.log(this.user)
+    console.log(this.selectedRole)
   }
 }

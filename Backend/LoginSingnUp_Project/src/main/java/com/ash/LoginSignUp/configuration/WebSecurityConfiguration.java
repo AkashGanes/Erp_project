@@ -50,7 +50,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .authorizeRequests().antMatchers("/authenticate", "/save","/getById/{id}","/saveRoles",
                 		"/update/{id}","/delete/{id}","/getAll","/getAllRoles",
                 		"/get/{email}/{password}","/saveLeave",
-                		"/getLeaveData", "/saveLeave/{id}","/getLeaveDetails/{id}","/getLeaveData").permitAll()
+                		"/getLeaveData", "/saveLeave/{id}","/getLeaveDetails/{id}","/getLeaveData",
+                		"/saveDay","/getHoliday","/deleteLeave/{id}","/saveAttendance/{id}",
+                		"/getAllAttendance","/deleteAttendance/{id}","/getAttendanceById/{id}").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()
