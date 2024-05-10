@@ -4,6 +4,8 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +22,7 @@ import com.ash.LoginSignUp.dao.LoginPageDao;
 import com.ash.LoginSignUp.dto.LoginPage;
 import com.ash.LoginSignUp.enity.JwtRequest;
 import com.ash.LoginSignUp.enity.JwtResponse;
+import com.ash.LoginSignUp.enity.PaginationMeta;
 import com.ash.LoginSignUp.enity.ResponseStructure;
 
 @RestController
@@ -29,6 +32,7 @@ public class LoginPageController {
 	@Autowired
 	private LoginPageDao dao;
 	
+
 	
 	@Autowired
 	private JwtService jwtService;
@@ -71,8 +75,13 @@ public class LoginPageController {
 	}
 
 	@GetMapping("getAll")
-	public List<LoginPage> getAll() {
+	public  List<LoginPage> getAll() {
 		return dao.getAll();
+	}
+	
+	@GetMapping("/pagination")
+	public PaginationMeta<LoginPage> paginationByAllUser(Pageable pageable){
+		return dao.paginationByAllUser(pageable);
 	}
 
 	@DeleteMapping("delete/{id}")

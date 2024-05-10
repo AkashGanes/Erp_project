@@ -3,7 +3,7 @@ package com.ash.LoginSignUp.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +11,9 @@ import com.ash.LoginSignUp.Repository.AttendanceRepository;
 import com.ash.LoginSignUp.Repository.LoginPageRepository;
 import com.ash.LoginSignUp.Repository.UserAttendanceDetailsRepository;
 import com.ash.LoginSignUp.dto.Attendance;
-import com.ash.LoginSignUp.dto.LeaveForm;
+
 import com.ash.LoginSignUp.dto.LoginPage;
-import com.ash.LoginSignUp.dto.UserAndLeaveDetails;
+
 import com.ash.LoginSignUp.dto.UserAttendanceDetails;
 
 @Repository

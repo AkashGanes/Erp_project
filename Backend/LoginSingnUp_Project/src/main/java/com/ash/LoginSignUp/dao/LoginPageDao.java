@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,7 @@ import com.ash.LoginSignUp.Repository.LoginPageRepository;
 import com.ash.LoginSignUp.Repository.RolesRepository;
 import com.ash.LoginSignUp.dto.LoginPage;
 import com.ash.LoginSignUp.dto.Roles;
+import com.ash.LoginSignUp.enity.PaginationMeta;
 
 @Repository
 public class LoginPageDao {
@@ -62,6 +65,12 @@ public class LoginPageDao {
 	}
 	public List<LoginPage> getAll() {
 		return repo.findAll();
+	}
+	public PaginationMeta<LoginPage> paginationByAllUser(Pageable pageable) {
+		
+//		PageRequest pageRequest = PageRequest.of(0,6);
+		return PaginationMeta.createPagination(repo.findAll(pageable));
+		
 	}
 	public LoginPage getById(int id) {
 		return repo.findById(id).get();

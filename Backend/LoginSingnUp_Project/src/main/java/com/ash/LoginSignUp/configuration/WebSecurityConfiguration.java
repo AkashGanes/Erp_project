@@ -52,7 +52,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
                 		"/get/{email}/{password}","/saveLeave",
                 		"/getLeaveData", "/saveLeave/{id}","/getLeaveDetails/{id}","/getLeaveData",
                 		"/saveDay","/getHoliday","/deleteLeave/{id}","/saveAttendance/{id}",
-                		"/getAllAttendance","/deleteAttendance/{id}","/getAttendanceById/{id}").permitAll()
+                		"/getAllAttendance","/deleteAttendance/{id}","/getAttendanceById/{id}",
+                		"/pagination").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()
