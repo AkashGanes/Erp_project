@@ -30,6 +30,7 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+import { InformationComponent } from './information/information.component';
 
 
 
@@ -60,7 +61,8 @@ import { AttendanceListComponent } from './attendance-list/attendance-list.compo
     HolidayComponent,
     HolidayPageComponent,
     AttendanceComponent,
-    AttendanceListComponent
+    AttendanceListComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,

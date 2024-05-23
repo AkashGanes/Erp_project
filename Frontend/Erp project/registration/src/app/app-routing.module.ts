@@ -18,6 +18,7 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+import { InformationComponent } from './information/information.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,8 @@ const routes: Routes = [
   {path:'holidaypage',component:HolidayPageComponent},
   {path:'attendance',component:AttendanceComponent},
   {path:'attendancelist',component:AttendanceListComponent},
+  {path:'information',component:InformationComponent},
+
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[authGuard],data:{roles:['Super Admin']}}
 ];
 
