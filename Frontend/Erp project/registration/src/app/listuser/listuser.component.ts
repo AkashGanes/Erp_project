@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
 export class ListuserComponent {
   constructor(public loginService:LoginSignupService,public router:Router){
    
-    this.getAll()
+    this.pagination()
   }
 
   index=1
   searchText=''
+  pageSize!:number
+  totalCount!:number
   currentPage: number = 1;
   updateUser={
     id:"",
@@ -22,7 +24,7 @@ export class ListuserComponent {
     lastName:"",
     email:"",
     password:"",
-    phoneNumber:"",
+    phoneNumber:null,
     role:[
       {
         roleName:"",
@@ -36,6 +38,7 @@ export class ListuserComponent {
     this.loginService.getAll().subscribe((resp)=>{
       // console.log(resp)
       this.allUserDetails=resp
+      console.log(this.allUserDetails)
     })
   }
   update(id:number){
@@ -51,7 +54,25 @@ this.id=id
   this.loginService.delete(this.id).subscribe((resp)=>{
     console.log(resp)
     alert(resp)
-    this.getAll();
+    this.pagination()
   })
+}
+pagination(){
+  this.loginService.pagination(this.currentPage).subscribe((resp:any)=>{
+    this.allUserDetails=resp.listUser
+    this.totalCount=resp.totalCount
+    this.pageSize=resp.pageSize
+    console.log(resp)
+  })
+}
+
+renderPage(event:number){
+  this.currentPage=event
+  // console.log(this.currentPage)
+  this.pagination()
+//   this.loginService.pagination(event).subscribe((resp:any)=>{
+//   this.allUserDetails=resp.listUser
+//   console.log(resp)
+// })
 }
 }

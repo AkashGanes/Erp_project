@@ -10,16 +10,18 @@ import { Router } from '@angular/router';
 export class HolidayPageComponent{
 
   formData = {
-    id: "",
+    SNo: '',
     date:"",
     leaveType: ""
     
   };
  submit=false
  errorMessage=""
-sno: any;
-date: any;
-leaveType: any;
+  id:any;
+  SNo!: number;
+  date: any;
+  leaveType: any;
+  
   
   
 
@@ -40,6 +42,7 @@ leaveType: any;
        if(resp!=null){
        
        formGroup.reset()
+       
        alert("successfully")
        this.router.navigate(['/holiday'])
        // this.loginService.isAuthenticated=true

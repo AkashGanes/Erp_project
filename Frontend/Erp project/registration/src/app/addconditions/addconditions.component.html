@@ -1,0 +1,72 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add Terms & Conditions</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">General Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">Terms & Conditions</h3>
+                        </div>
+                          
+                        <div class="condition-form col-md-12"> 
+                            <div *ngFor="let condition of conditions; let i = index" class="condition row">
+                               
+                                <div class="col-md-1 form-group cond">
+                                    <label for="sno"></label>
+                                    <input type="number" id="sno{{i}}" [(ngModel)]="condition.sno" name="sno{{i}}" class="form-control" readonly>
+                                </div>
+                                
+                                <div class="col-md-9 form-group cond">
+                                    <label for="condition{{i}}"></label>
+                                    <input type="text" id="condition{{i}}" [(ngModel)]="condition.terms" name="condition{{i}}" placeholder="Terms & Conditions" class="form-control"required>
+                                </div>
+                                
+                                <div class="col-md-2 form-group btnr">
+                                    <button type="btn btn-danger" (click)="removeCondition(i)" class="remove-btn btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                            <div class="add-btn-wrapper">
+                                <button type="btn btn-primary" (click)="addCondition()" class="add-btn btn btn-dark"><i class="fa fa-plus " aria-hidden="true"></i>Add</button>
+                            </div>
+                        </div>
+                        <div class="button">
+                         
+                            <button class="btn btn-success" (click)="onSubmit()">Save</button>
+                            <button class="btn btn-primary" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    </div>
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+          <b>Version</b> 3.2.0
+        </div>
+        <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+      </footer>
+    
+    
+   
+
+

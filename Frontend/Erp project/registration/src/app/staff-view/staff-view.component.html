@@ -1,0 +1,806 @@
+<!-- <app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-12">
+    </div>
+  </div>
+  
+  <div class="row" style="margin-left: 0%; margin-right: 0%; margin-top: 2%;">
+    <div class="col-12 col-sm-12">
+      <div class="card card-primary card-tabs">
+        <div class="card-header p-0 pt-1 pl-1">
+          <ul class="nav nav-tabs col-md-12" id="custom-tabs-one-tab" role="tablist">
+            <li class="nav-item col-md-2">
+              <a class="nav-link active" style="text-align: center;" id="custom-tabs-one-home-tab" data-toggle="pill"
+                href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Basic
+                Information</a>
+            </li>
+            <li class="nav-item col-md-3">
+              <a class="nav-link" style="text-align: center;" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile"
+                aria-selected="false">Personal Information</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <div class="tab-content" id="custom-tabs-one-tabContent">
+            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+              aria-labelledby="custom-tabs-one-home-tab">
+              <section class="content ">
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="row ">
+                        <div class="col-md-12 col-sm-12">
+                            
+                                <div class="card-header">
+              <form class="row g-3 pl-5 pr-5 pt-3 pb-3">
+                <div class="form-group col-md-6">
+                  <label for="firstName">First Name:</label><br>
+                  <span id="firstName">John</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Last Name:</label><br>
+                  <span id="lastName">Doe</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="phoneNumber">Contact Number:</label><br>
+                  <span id="phoneNumber">1234567890</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="dob">Date of Birth:</label><br>
+                  <span id="dob">1990-01-01</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="gender">Gender:</label><br>
+                  <span id="gender">Male</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mstatus">Marital Status:</label><br>
+                  <span id="mstatus">Single</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="info">Proof:</label><br>
+                  <span id="info">ID Card</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="number">Proof Id:</label><br>
+                  <span id="number">A1234567</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="specialization">Specialization:</label><br>
+                  <span id="specialization">Software Development</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="academicyear">Academic Year:</label><br>
+                  <span id="academicyear">2022</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="qualification">Qualification:</label><br>
+                  <span id="qualification">UG</span>
+                </div>
+              </form>
+            </div>
+                        </div>
+                    </div>
+                  </div>
+                  </section>
+
+            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+              aria-labelledby="custom-tabs-one-profile-tab">
+              <form class="row g-3 pl-5 pr-5 pt-3 pb-3">
+                <div>
+                  <div class="form-group col-md-6">
+                    <label for="resume">Upload Resume:</label>
+                    <input #fileUploader type="file" id="resume" name="resume"
+                      accept="application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                      class="form-control" required>
+                      
+                    <span class="text-danger">Resume is required.</span>
+                    <div>                        
+                      <a class="btn-link text-secondary">
+                        <i class="far fa-fw fa-file-pdf"></i>
+                      </a>
+                      <button class="btn">
+                        <i class="fa fa-close" style="font-size:16px;color: crimson;"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="photo">Upload Photo:</label>
+                    <input #imageUploader id="picture" name="picture" type="file" accept="image/png, image/jpeg, image/jpg"
+                      class="form-control" required>
+                    <span class="text-danger">Picture is required.</span>
+                    <div>
+                      <a class="btn-link text-secondary">
+                        <i class="far fa-fw fa-file-image"></i>
+                      </a>
+                      <button class="btn">
+                        <i class="fa fa-close" style="font-size:16px;color:crimson;"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 form-group doc">
+                    <label for="doc">Document:</label>
+                    <input type="file" id="doc" accept="application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="doc" class="form-control">
+                  </div>
+
+                  <div class="col-md-2 form-group btnr p-3">
+                    <button type="button" class="btn remove-btn btn-danger mt-3">Remove</button>
+                  </div>
+                </div>
+              
+                <div class="add-btn-wrapper">
+                  <button type="button" class="btn btn-dark add-btn btn btn-success">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add Information
+                  </button>
+                </div>
+                <div class="button">
+                  <a href="#custom-tabs-one-messages-tab" class="btn btn-primary ml-2">Next</a>
+                  <button class="btn btn-success ml-2">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            Add similar changes to other tabs as necessary
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="main-footer">
+  <div class="float-right d-none d-sm-block">
+    <b>Version</b> 3.2.0
+  </div>
+  <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+</footer> -->
+<<<<<<< HEAD
+<!-- <div class="wrapper">
+=======
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+<div class="row">
+  <div class="col-12">
+    <div class="card card-primary card-tabs">
+      <div class="card-header p-0 pt-1">
+        <ul class="nav nav-tabs col-md-12" id="custom-tabs-one-tab" role="tablist">
+          <li class="nav-item col-md-6">
+            <a class="nav-link active" style="text-align: center;"id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Informations</a>
+          </li>
+          <li class="nav-item col-md-6">
+            <a class="nav-link" style="text-align: center;" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Documents</a>
+          </li>
+         </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="custom-tabs-one-tabContent">
+          <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+            <form class="row g-3 pl-5 pr-5 pt-3 pb-3" style="border:1px solid rgb(228, 225, 225);border-radius: 5px;">
+              
+              <div class="form-group col-md-4">
+                <label for="firstName">First Name:</label><br>
+                <span id="firstName" class="form-control">John</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="lastName">Last Name:</label><br>
+                <span id="lastName"class="form-control">Doe</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="phoneNumber">Contact Number:</label><br>
+                <span id="phoneNumber"class="form-control">1234567890</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="dob">Date of Birth:</label><br>
+                <span id="dob"class="form-control">1990-01-01</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="gender">Gender:</label><br>
+                <span id="gender" class="form-control">Male</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="mstatus">Marital Status:</label><br>
+                <span id="mstatus" class="form-control">Single</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="info">Proof:</label><br>
+                <span id="info" class="form-control">ID Card</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="number">Proof Id:</label><br>
+                <span id="number" class="form-control">A1234567</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="qualification">Qualification:</label><br>
+                <span id="qualification" class="form-control">UG</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="specialization">Specialization:</label><br>
+                <span id="specialization" class="form-control">Software Development</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="academicyear">Academic Year:</label><br>
+                <span id="academicyear" class="form-control">2022</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="companyname">Company Name:</label><br>
+                <span id="companyname" class="form-control">nps</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="joineddate">Joined Date:</label><br>
+                <span id="joineddate" class="form-control">02.11.2001</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="releaveddate">Releaved Date:</label><br>
+                <span id="releaveddate" class="form-control">23.05.2003</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="ctc">CTC:</label><br>
+                <span id="ctc" class="form-control">100000000</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="reason">Reason:</label><br>
+                <span id="reason" class="form-control">Summa</span>
+              </div>
+            
+            </form>          
+          </div>
+          <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+            <form class="row g-3 pl-5 pr-5 pt-3 pb-3" style="border:1px solid rgb(228, 225, 225);border-radius: 5px;">
+              <div class="form-group col-md-6">
+                <label for="resume1">Photo of Basic Information:</label>
+                <span id="resume1" class="form-control">John Doe's Resume</span>
+                <a href="path/to/saved_resume1.pdf" target="_blank" class="btn-link text-secondary">
+                  <i class="far fa-fw fa-file-pdf"></i> View
+                </a>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="resume2">Resume of Basic Information:</label>
+                <span id="resume2" class="form-control">Jane Smith's Resume</span>
+                <a href="path/to/saved_resume2.pdf" target="_blank" class="btn-link text-secondary">
+                  <i class="far fa-fw fa-file-pdf"></i> View
+                </a>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="resume3">Document of Personal Information:</label>
+                <span id="resume3" class="form-control">Mike Johnson's Resume</span>
+                <a href="path/to/saved_resume3.pdf" target="_blank" class="btn-link text-secondary">
+                  <i class="far fa-fw fa-file-pdf"></i> View
+                </a>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="resume4">Document of Eduaction Qualification:</label>
+                <span id="resume4" class="form-control">Sarah Lee's Resume</span>
+                <a href="path/to/saved_resume4.pdf" target="_blank" class="btn-link text-secondary">
+                  <i class="far fa-fw fa-file-pdf"></i> View
+                </a>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="resume5">Releaved letter of Work Experience:</label>
+                <span id="resume5" class="form-control">Tom Brown's Resume</span>
+                <a href="path/to/saved_resume5.pdf" target="_blank" class="btn-link text-secondary">
+                  <i class="far fa-fw fa-file-pdf"></i> View
+                </a>
+              </div>
+            </form>
+          </div>
+<<<<<<< HEAD
+        </div>     -->
+
+
+
+
+
+<div class="wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <!-- <h4>Nav Tabs inside Card Header <small>card-tabs / card-outline-tabs</small></h4> -->
+            </div>
+        </div>
+        <!-- ./row -->
+        <div class="row" style="margin-left: 0%;margin-right: 0%; margin-top: 2%;">
+            <div class="col-12 col-sm-12">
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs col-md-12" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item col-md-6">
+                                <a class="nav-link active" style="text-align: center;" id="custom-tabs-one-home-tab"
+                                    data-toggle="pill" href="#custom-tabs-one-home" role="tab"
+                                    aria-controls="custom-tabs-one-home" aria-selected="true">Informations</a>
+                            </li>
+                            <li class="nav-item col-md-6">
+                                <a class="nav-link" style="text-align: center;" id="custom-tabs-one-profile-tab"
+                                    data-toggle="pill" href="#custom-tabs-one-profile" role="tab"
+                                    aria-controls="custom-tabs-one-profile" aria-selected="false">Documents</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-home-tab">
+                                <section class="content">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card card-teal">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">General</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool"
+                                                            data-card-widget="collapse" title="Collapse">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form class="row g-3 pl-5 pr-5 pt-3 pb-3">
+
+                                                        <div class="form-group col-md-4">
+                                                            <label for="firstName">First Name:</label><br>
+                                                            <span id="firstName"
+                                                                class="form-control">{{allInformation.firstName}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="lastName">Last Name:</label><br>
+                                                            <span id="lastName"
+                                                                class="form-control">{{allInformation.lastName}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="phoneNumber">Contact Number:</label><br>
+                                                            <span id="phoneNumber"
+                                                                class="form-control">{{allInformation.phoneNumber}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="dob">Date of Birth:</label><br>
+                                                            <span id="dob" class="form-control">{{allInformation.dob |
+                                                                date:'dd-MM-yyyy'}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="gender">Gender:</label><br>
+                                                            <span id="gender"
+                                                                class="form-control">{{allInformation.gender}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="mstatus">Marital Status:</label><br>
+                                                            <span id="mstatus"
+                                                                class="form-control">{{allInformation.maritalStatus}}</span>
+                                                        </div>
+                                                        <!-- <div class="form-group col-md-4">
+                                              <label for="info">Proof:</label><br>
+                                              <span id="info" class="form-control">{{allInformation}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="number">Proof Id:</label><br>
+                                              <span id="number" class="form-control">A1234567</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="qualification">Qualification:</label><br>
+                                              <span id="qualification" class="form-control">UG</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="specialization">Specialization:</label><br>
+                                              <span id="specialization" class="form-control">Software Development</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="academicyear">Academic Year:</label><br>
+                                              <span id="academicyear" class="form-control">2022</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="companyname">Company Name:</label><br>
+                                              <span id="companyname" class="form-control">nps</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="joineddate">Joined Date:</label><br>
+                                              <span id="joineddate" class="form-control">02.11.2001</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="releaveddate">Releaved Date:</label><br>
+                                              <span id="releaveddate" class="form-control">23.05.2003</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="ctc">CTC:</label><br>
+                                              <span id="ctc" class="form-control">100000000</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="reason">Reason:</label><br>
+                                              <span id="reason" class="form-control">Summa</span>
+                                            </div>
+                                           -->
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card card-success">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Qualifications</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool"
+                                                            data-card-widget="collapse" title="Collapse">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form class="row g-3 pl-5 pr-5 pt-3 pb-3"
+                                                        *ngFor="let edu of allInformation.educationalQualifications">
+
+                                                        <!-- <div class="form-group col-md-4">
+                                              <label for="firstName">First Name:</label><br>
+                                              <span id="firstName" class="form-control">{{allInformation.firstName}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="lastName">Last Name:</label><br>
+                                              <span id="lastName"class="form-control">{{allInformation.lastName}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="phoneNumber">Contact Number:</label><br>
+                                              <span id="phoneNumber"class="form-control">{{allInformation.phoneNumber}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="dob">Date of Birth:</label><br>
+                                              <span id="dob"class="form-control">{{allInformation.dob | date:'dd-MM-yyyy'}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="gender">Gender:</label><br>
+                                              <span id="gender" class="form-control">{{allInformation.gender}}</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="mstatus">Marital Status:</label><br>
+                                              <span id="mstatus" class="form-control">{{allInformation.maritalStatus}}</span>
+                                            </div> -->
+
+                                                        <div class="form-group col-md-4">
+                                                            <label for="info">Academic Year:</label><br>
+                                                            <span id="info"
+                                                                class="form-control">{{edu.academicYear}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="number">Specialization:</label><br>
+                                                            <span id="number"
+                                                                class="form-control">{{edu.specialization}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="qualification">Qualification:</label><br>
+                                                            <span id="qualification"
+                                                                class="form-control">{{edu.qualification}}</span>
+                                                        </div>
+
+
+                                                        <!-- <div class="form-group col-md-4">
+                                              <label for="specialization">Specialization:</label><br>
+                                              <span id="specialization" class="form-control">Software Development</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="academicyear">Academic Year:</label><br>
+                                              <span id="academicyear" class="form-control">2022</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="companyname">Company Name:</label><br>
+                                              <span id="companyname" class="form-control">nps</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="joineddate">Joined Date:</label><br>
+                                              <span id="joineddate" class="form-control">02.11.2001</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="releaveddate">Releaved Date:</label><br>
+                                              <span id="releaveddate" class="form-control">23.05.2003</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="ctc">CTC:</label><br>
+                                              <span id="ctc" class="form-control">100000000</span>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                              <label for="reason">Reason:</label><br>
+                                              <span id="reason" class="form-control">Summa</span>
+                                            </div> -->
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card card-info">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Personal</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool"
+                                                            data-card-widget="collapse" title="Collapse">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form class="row g-3 pl-5 pr-5 pt-3 pb-3"
+                                                        *ngFor="let personal of allInformation.personalInformation">
+
+                                                        <!-- <div class="form-group col-md-4">
+                                                  <label for="firstName">First Name:</label><br>
+                                                  <span id="firstName" class="form-control">{{allInformation.firstName}}</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="lastName">Last Name:</label><br>
+                                                  <span id="lastName"class="form-control">{{allInformation.lastName}}</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="phoneNumber">Contact Number:</label><br>
+                                                  <span id="phoneNumber"class="form-control">{{allInformation.phoneNumber}}</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="dob">Date of Birth:</label><br>
+                                                  <span id="dob"class="form-control">{{allInformation.dob | date:'dd-MM-yyyy'}}</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="gender">Gender:</label><br>
+                                                  <span id="gender" class="form-control">{{allInformation.gender}}</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="mstatus">Marital Status:</label><br>
+                                                  <span id="mstatus" class="form-control">{{allInformation.maritalStatus}}</span>
+                                                </div> -->
+
+                                                        <div class="form-group col-md-6">
+                                                            <label for="info">Proof:</label><br>
+                                                            <span id="info"
+                                                                class="form-control">{{personal.proof}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="number">Proof Id:</label><br>
+                                                            <span id="number"
+                                                                class="form-control">{{personal.proofId}}</span>
+                                                        </div>
+
+
+
+                                                        <!-- <div class="form-group col-md-4">
+                                                  <label for="specialization">Specialization:</label><br>
+                                                  <span id="specialization" class="form-control">Software Development</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="academicyear">Academic Year:</label><br>
+                                                  <span id="academicyear" class="form-control">2022</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="companyname">Company Name:</label><br>
+                                                  <span id="companyname" class="form-control">nps</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="joineddate">Joined Date:</label><br>
+                                                  <span id="joineddate" class="form-control">02.11.2001</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="releaveddate">Releaved Date:</label><br>
+                                                  <span id="releaveddate" class="form-control">23.05.2003</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="ctc">CTC:</label><br>
+                                                  <span id="ctc" class="form-control">100000000</span>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                  <label for="reason">Reason:</label><br>
+                                                  <span id="reason" class="form-control">Summa</span>
+                                                </div> -->
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card card-secondary">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Experience</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool"
+                                                            data-card-widget="collapse" title="Collapse">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form class="row g-3 pl-5 pr-5 pt-3 pb-3"
+                                                        *ngFor="let exp of allInformation.workExp">
+
+                                                        <!-- <div class="form-group col-md-4">
+                                                      <label for="firstName">First Name:</label><br>
+                                                      <span id="firstName" class="form-control">{{allInformation.firstName}}</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="lastName">Last Name:</label><br>
+                                                      <span id="lastName"class="form-control">{{allInformation.lastName}}</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="phoneNumber">Contact Number:</label><br>
+                                                      <span id="phoneNumber"class="form-control">{{allInformation.phoneNumber}}</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="dob">Date of Birth:</label><br>
+                                                      <span id="dob"class="form-control">{{allInformation.dob | date:'dd-MM-yyyy'}}</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="gender">Gender:</label><br>
+                                                      <span id="gender" class="form-control">{{allInformation.gender}}</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="mstatus">Marital Status:</label><br>
+                                                      <span id="mstatus" class="form-control">{{allInformation.maritalStatus}}</span>
+                                                    </div> -->
+
+                                                        <div class="form-group col-md-4">
+                                                            <label for="info">Company:</label><br>
+                                                            <span id="info"
+                                                                class="form-control">{{exp.companyName}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="number">CTC:</label><br>
+                                                            <span id="number" class="form-control">{{exp.ctc}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="qualification">Joined:</label><br>
+                                                            <span id="qualification"
+                                                                class="form-control">{{exp.joinedDate |
+                                                                date:'dd-MM-yyyy'}}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="qualification">Releaved:</label><br>
+                                                            <span id="qualification"
+                                                                class="form-control">{{exp.releavedDate |
+                                                                date:'dd-MM-yyyy'}}</span>
+                                                        </div>
+
+                                                        <!-- <div class="form-group col-md-4">
+                                                      <label for="specialization">Specialization:</label><br>
+                                                      <span id="specialization" class="form-control">Software Development</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="academicyear">Academic Year:</label><br>
+                                                      <span id="academicyear" class="form-control">2022</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="companyname">Company Name:</label><br>
+                                                      <span id="companyname" class="form-control">nps</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="joineddate">Joined Date:</label><br>
+                                                      <span id="joineddate" class="form-control">02.11.2001</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="releaveddate">Releaved Date:</label><br>
+                                                      <span id="releaveddate" class="form-control">23.05.2003</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="ctc">CTC:</label><br>
+                                                      <span id="ctc" class="form-control">100000000</span>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label for="reason">Reason:</label><br>
+                                                      <span id="reason" class="form-control">Summa</span>
+                                                    </div> -->
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a href="#" class="btn btn-secondary">Cancel</a>
+                                            <input type="submit" value="Save Changes"
+                                                class="btn btn-success float-right">
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-profile-tab" >
+                                <section class="content">
+                                    <div class="col-md-12">
+                                            <div class="card card-teal">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Files</h3>
+                                                    <div class="card-tools">
+                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                    </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body table-responsive p-0" >
+                                                  <table class="table table-head-fixed text-nowrap">
+                                                    <thead>
+                                                      <tr>
+                                                        <th>File Name</th>
+                                                        <th>File Size</th>
+                                                        <th>Action</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr *ngIf="allInformation?.picture">
+                                                        <td>{{allInformation.picture.name}}</td>
+                                                        <td>{{ getFileSize(allInformation.picture.id) }}</td>
+                                                        <td class="text-right py-0 align-middle">
+                                                          <div class="btn-group btn-group-sm">
+                                                            <a (click)="getImage(allInformation.picture.id)" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                            <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr *ngIf="allInformation?.resume">
+                                                        <td>{{allInformation.resume.name}}</td>
+                                                        <td>{{ getFileSize(allInformation.resume.id) }}</td>
+                                                        <td class="text-right py-0 align-middle">
+                                                          <div class="btn-group btn-group-sm">
+                                                            <a (click)="getPdf(allInformation.resume.id)" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                            <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr *ngFor="let info of allInformation.personalInformation">
+                                                        <td>{{info?.documentOfProof?.name}}</td>
+                                                        <td>{{ getFileSize(info?.documentOfProof?.id) }}</td>
+                                                        <td class="text-right py-0 align-middle">
+                                                          <div class="btn-group btn-group-sm">
+                                                            <a (click)="getPdf(info?.documentOfProof?.id)" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                            <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr *ngFor="let edu of allInformation.educationalQualifications">
+                                                        <td>{{edu?.documentOfQualification?.name}}</td>
+                                                        <td>{{ getFileSize(edu?.documentOfQualification?.id) }}</td>
+                                                        <td class="text-right py-0 align-middle">
+                                                          <div class="btn-group btn-group-sm">
+                                                            <a (click)="getPdf(edu?.documentOfQualification?.id)" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                            <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr *ngFor="let exp of allInformation.workExp">
+                                                        <td>{{exp?.releavedLetter?.name}}</td>
+                                                        <td>{{ getFileSize(exp?.releavedLetter?.id) }}</td>
+                                                        <td class="text-right py-0 align-middle">
+                                                          <div class="btn-group btn-group-sm">
+                                                            <a (click)="getPdf(exp?.releavedLetter?.id)" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                            <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>                                                
+                                                  </div> 
+                                            </div>
+                                        </div>
+                                </section>                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
+=======
+          
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f

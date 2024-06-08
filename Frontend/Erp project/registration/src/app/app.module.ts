@@ -31,6 +31,25 @@ import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
 
+import { NgSelectModule} from '@ng-select/ng-select';
+
+import { StaffInformationComponent } from './staff-information/staff-information.component';
+<<<<<<< HEAD
+import { ListstaffComponent } from './liststaff/liststaff.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { DemoComponent } from './demo/demo.component';
+import { StaffViewComponent } from './staff-view/staff-view.component';
+
+=======
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { AddconditionsComponent } from './addconditions/addconditions.component';
+import { StaffmanagementlistComponent } from './staffmanagementlist/staffmanagementlist.component';
+import { StaffViewComponent } from './staff-view/staff-view.component';
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
+
+
+
+
 
 
 
@@ -60,7 +79,27 @@ import { AttendanceListComponent } from './attendance-list/attendance-list.compo
     HolidayComponent,
     HolidayPageComponent,
     AttendanceComponent,
-    AttendanceListComponent
+    AttendanceListComponent,
+<<<<<<< HEAD
+    StaffInformationComponent,
+    ListstaffComponent,
+    DemoComponent,
+    StaffViewComponent,
+=======
+    StaffComponent,
+    AddStaffComponent,
+    PersonalInformationComponent,
+    EduQualificationComponent,
+    UserConfirmationComponent,
+    WorkExperienceComponent,
+    StaffInformationComponent,
+    StaffViewComponent,
+    StaffmanagementlistComponent,
+    TermsConditionsComponent,
+    AddconditionsComponent
+  
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
+  
   ],
   imports: [
     BrowserModule,
@@ -69,8 +108,11 @@ import { AttendanceListComponent } from './attendance-list/attendance-list.compo
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule
+   NgxPaginationModule,
+    Ng2SearchPipeModule,
+    NgSelectModule,
+    AutocompleteLibModule
+
   ],
   providers: [
     provideClientHydration(),LoginSignupService,LoginComponent

@@ -10,11 +10,13 @@ export class HolidayComponent implements OnInit {
 
   currentPage: number = 1; // Initialize currentPage to 1
   formData = {
-    id: "",
+    // id: "",
+    SNo: '',
     date: "",
     leave: "",
 
   };
+  id!:number
   submit = false
   errorMessage = ""
   allUserLeave: any;
@@ -34,5 +36,18 @@ export class HolidayComponent implements OnInit {
       this.allUserLeave = resp
     })
   }
+ deleteCall(id:number){
 
-}
+  this.id=id
+ }
+ confirmDelete(){
+  this.loginService.deleteHoliday(this.id).subscribe(res=>{
+    console.log(res)
+    alert(res)
+    this.getLeave()
+  })
+  
+ }
+  }
+  
+

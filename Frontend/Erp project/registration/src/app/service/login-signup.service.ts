@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAuthService } from './user-auth.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -137,7 +138,9 @@ href: any;
    getHoliday(){
    return this.http.get<any>(this.API+"getHoliday")
    }
-
+   deleteHoliday(id:number){
+    return this.http.delete(this.API+"deleteHoliday/"+id,{responseType:'text'})
+   }
    saveAttendance(data:any,id:any){
     return this.http.post(this.API+"saveAttendance/"+id ,data)
     
@@ -151,5 +154,55 @@ href: any;
   }
   deleteAttendace(id:number){
     return this.http.delete(this.API+"deleteAttendance/"+id,{responseType:'text'})
+  }
+
+  pagination(pageNumber:number){
+    return this.http.get(this.API+"pagination?page-number="+pageNumber)
+  }
+
+
+  getImage(id:number): Observable<Blob>{
+    return this.http.get(this.API+"getImage/"+id,{responseType:'blob'})
+  }
+  getFile(id:number): Observable<Blob>{
+    return this.http.get(this.API+"getFile/"+id,{responseType:'blob'})
+  }
+
+  saveBasicInformationWithFiles(formData:any){
+  return this.http.post(this.API+"saveInformation",formData,{headers:this.requestHeader})
+  }
+<<<<<<< HEAD
+  getBasicInformation(id:number){
+    return this.http.get(this.API+"getInformation/"+id)
+  }
+  getAllBasicInformation(){
+    return this.http.get(this.API+"getAllBasicInformation")
+  }
+  paginationOfBasicInformation(pageNumber:number){
+    return this.http.get(this.API+"paginationBasicInfo?page-number="+pageNumber)
+  }
+  savePersonalInformation(data:FormData,id:number){
+    return this.http.post(this.API+"savePersonalInformation/"+id,data)
+  }
+  saveQualification(data:FormData,id:number){
+
+    return this.http.post(this.API+"saveQualification/"+id,data)
+  }
+
+  saveExperience(data:FormData,id:number){
+    return this.http.post(this.API+"saveExperience/"+id,data)
+=======
+  saveTermsAndCondtions(data:any){
+    return this.http.post(this.API+"saveCondition",data,{headers:this.requestHeader})
+  }
+  getAllTermsAndConditions(){
+    return this.http.get<any>(this.API+"getCondition")
+  }
+  getByIdTermsAndconditions(){
+    return this.http.get(this.API+"getConditionById/"+this.id)
+  }
+  deleteTermsAndConditions(id: number) {
+    return this.http.delete(this.API+"deleteCondition/"+id,{responseType:'text'})
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
   }
 }

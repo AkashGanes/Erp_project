@@ -1,6 +1,7 @@
 <!-- Preloader -->
  
   <!-- Navbar -->
+  
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -130,13 +131,27 @@
 
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="../../assets/img/avatar5.png" class="user-image img-circle elevation-2" alt="User Image">
+            <ng-container *ngIf="image;then imageExists;else imageNotExists"></ng-container>
+            <ng-template #imageExists>
+              <img [src]="image" class="user-image img-circle elevation-2" alt="User Image">
+            </ng-template>
+            <ng-template #imageNotExists>
+              <img src="assets/img/blank-profile-picture-973460_640.webp" class="user-image img-circle elevation-2" alt="User Image">
+            </ng-template>
+          
           <span class="d-none d-md-inline" >{{user.userName+' - '+user.role[0].roleName}}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           
-          <li class="user-header bg-primary">
-          <img src="../../assets/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+          <li class="user-header bg-dark">
+            <ng-container *ngIf="image;then imageExists;else imageNotExists"></ng-container>
+            <ng-template #imageExists>
+              <img [src]="image" class="user-image img-circle elevation-2" alt="User Image">
+            </ng-template>
+            <ng-template #imageNotExists>
+              <img src="assets/img/blank-profile-picture-973460_640.webp" class="user-image img-circle elevation-2" alt="User Image">
+            </ng-template>
+          <i class="fa fa-edit" style="font-size:20px"></i>
           <p></p>
           <span>{{user.userName}} - </span>
           <span>{{user.role[0].roleName}}</span><br>
@@ -200,4 +215,4 @@
             </div>
         </div>
     </div>
-</div>
+

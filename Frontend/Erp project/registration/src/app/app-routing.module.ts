@@ -18,6 +18,18 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+import { StaffInformationComponent } from './staff-information/staff-information.component';
+<<<<<<< HEAD
+import { ListstaffComponent } from './liststaff/liststaff.component';
+import { DemoComponent } from './demo/demo.component';
+import { StaffViewComponent } from './staff-view/staff-view.component';
+
+=======
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { AddconditionsComponent } from './addconditions/addconditions.component';
+import { StaffmanagementlistComponent } from './staffmanagementlist/staffmanagementlist.component';
+import { StaffViewComponent } from './staff-view/staff-view.component';
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
 
 
 const routes: Routes = [
@@ -37,6 +49,25 @@ const routes: Routes = [
   {path:'holidaypage',component:HolidayPageComponent},
   {path:'attendance',component:AttendanceComponent},
   {path:'attendancelist',component:AttendanceListComponent},
+<<<<<<< HEAD
+  {path:'addstaff',component:StaffInformationComponent},
+  {path:'liststaff',component:ListstaffComponent},
+  {path:'demo',component:DemoComponent},
+  {path:'viewstaff/:id',component:StaffViewComponent},
+  
+=======
+  {path:'stafflist',component:StaffComponent},
+  {path:'addstaff',component:AddStaffComponent},
+  {path:'work-exp',component:WorkExperienceComponent},
+  {path:'personal-information',component:PersonalInformationComponent},
+  {path:'edu-qualification',component:EduQualificationComponent},
+  {path:'user-confirmation',component:UserConfirmationComponent},
+  {path:'staff',component:StaffInformationComponent},
+  {path:'staff-view',component:StaffViewComponent},
+  {path:'staffmanagementlist',component:StaffmanagementlistComponent},
+  {path:'terms-conditions',component:TermsConditionsComponent},
+  {path:'addconditions',component:AddconditionsComponent},
+>>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[authGuard],data:{roles:['Super Admin']}}
 ];
 

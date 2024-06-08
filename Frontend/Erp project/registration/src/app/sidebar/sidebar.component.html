@@ -2,7 +2,8 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <nav class="main-sidebar  sidebar-dark-primary elevation-4">
+  
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -34,6 +35,7 @@
           </div>
         </div>
       </div>
+      
       
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -71,15 +73,21 @@
                   </li>
                 </ul>
               </li> -->
-              <li class="nav-item menu">
-                <a href="#" class="nav-link active"  *ngIf="this.auth.roleMatch(['Super Admin','Admin'])">
-                  <i class="fas fa-users nav-icon"></i>
-                <p>
-                User Management
-                <i class="right fas fa-angle-left"></i>
-                </p>
+              <li class="nav-item">
+                <a href="javascript:void(0);" routerLink="/dashboard" class="nav-link" [ngClass]="{'active': isSectionActive('dashboard')}">
+                  <i class="fa fa-home nav-icon" aria-hidden="true"></i>
+                  <p>Dashboard</p>
                 </a>
-                <ul class="nav nav-treeview" *ngIf="this.auth.roleMatch(['Super Admin','Admin'])">
+              </li>
+              <li class="nav-item menu" [ngClass]="{'menu-open': isSectionActive('user-management')}">
+                <a href="#"  class="nav-link" [ngClass]="{'active': isSectionActive('user-management')}" *ngIf="this.auth.roleMatch(['Super Admin','Admin'])">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>
+                      User Management
+                      <i class="right fas fa-angle-left"></i>
+                  </p>
+              </a>
+                <ul class="nav nav-treeview" *ngIf="this.auth.roleMatch(['Super Admin','Admin'])" >
                 <!-- <li class="nav-item">
                   <a routerLink="/adduser" class="nav-link " routerLinkActive="active">
                     <i class="far fa-circle nav-icon"></i>
@@ -101,15 +109,15 @@
                 </ul>
                 </li>
     
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
+                <li class="nav-item" [ngClass]="{'menu-open': isSectionActive('leave-management')}">
+                  <a href="#" class="nav-link" [ngClass]="{'active': isSectionActive('leave-management')}">
                     <i class="nav-icon fas fa-calendar"></i>
                     <p>
                     Leave Management
                     <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" >
                     <li class="nav-item">
                       <a href="" class="nav-link"  routerLink="/viewleavepage" routerLinkActive="active">
                         <i class="far fa-circle nav-icon"></i>
@@ -130,8 +138,8 @@
                     </li>
                     </ul>
                 </li>
-          <li class="nav-item ">
-            <a href="#"class="nav-link" >
+          <li class="nav-item " [ngClass]="{'menu-open': isSectionActive('invoice')}">
+            <a href="#"class="nav-link"  [ngClass]="{'active': isSectionActive('invoice')}">
               <i class="nav-icon fas fa-info"></i>
               <p>
                Invoice
@@ -141,16 +149,46 @@
             <ul class="nav nav-treeview">
               <li class="nav-item" >
                 <a href="" class="nav-link ">
-                  <i class="fa fa-users nav-icon" ></i>
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Customers</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
-                  <i class="fa fa-arrow-down nav-icon"></i>
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Suppliers</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item "  [ngClass]="{'menu-open': isSectionActive('staff-management')}">
+            <a href="#"class="nav-link" [ngClass]="{'active': isSectionActive('staff-management')}"  *ngIf="this.auth.roleMatch(['Super Admin','HR'])">
+              
+              <i class="nav-icon fas fa-people-arrows"></i>
+              <p>
+               Staff Management
+               <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview"  >
+              <li class="nav-item" >
+                <a href="" class="nav-link " routerLink="/addstaff" routerLinkActive="active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Joinee</p>
+                </a>
+              </li>
+              <li class="nav-item" >
+                <a href="" class="nav-link " routerLink="/liststaff" routerLinkActive="active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Of Employees</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="fa fa-arrow-down nav-icon"></i>
+                  <p>Suppliers</p>
+                </a>
+              </li> -->
             </ul>
           </li>
           <!-- <li class="nav-item has-treeview">
@@ -751,7 +789,7 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </nav>
+  </aside>
 
 
 
