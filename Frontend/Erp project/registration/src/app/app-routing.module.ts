@@ -18,6 +18,7 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+<<<<<<< HEAD
 import { StaffInformationComponent } from './staff-information/staff-information.component';
 <<<<<<< HEAD
 import { ListstaffComponent } from './liststaff/liststaff.component';
@@ -30,6 +31,9 @@ import { AddconditionsComponent } from './addconditions/addconditions.component'
 import { StaffmanagementlistComponent } from './staffmanagementlist/staffmanagementlist.component';
 import { StaffViewComponent } from './staff-view/staff-view.component';
 >>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
+=======
+import { InformationComponent } from './information/information.component';
+>>>>>>> 52a39e44a4bea9d622ccac9e0d85ad81dd0dceac
 
 
 const routes: Routes = [
@@ -50,6 +54,7 @@ const routes: Routes = [
   {path:'attendance',component:AttendanceComponent},
   {path:'attendancelist',component:AttendanceListComponent},
 <<<<<<< HEAD
+<<<<<<< HEAD
   {path:'addstaff',component:StaffInformationComponent},
   {path:'liststaff',component:ListstaffComponent},
   {path:'demo',component:DemoComponent},
@@ -68,6 +73,10 @@ const routes: Routes = [
   {path:'terms-conditions',component:TermsConditionsComponent},
   {path:'addconditions',component:AddconditionsComponent},
 >>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
+=======
+  {path:'information',component:InformationComponent},
+
+>>>>>>> 52a39e44a4bea9d622ccac9e0d85ad81dd0dceac
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[authGuard],data:{roles:['Super Admin']}}
 ];
 

@@ -1,0 +1,283 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+<div class="row">
+    <div class="col-12">
+      <!-- <h4>Nav Tabs inside Card Header <small>card-tabs / card-outline-tabs</small></h4> -->
+    </div>
+  </div>
+  <!-- ./row -->
+  <div class="row" style="margin-left: 0%;margin-right: 0%; margin-top: 2%;">
+    <div class="col-12 col-sm-12">
+      <div class="card card-primary card-tabs">
+        <div class="card-header p-0 pt-1 pl-1 ">
+          <ul class="nav nav-tabs col-md-12" id="custom-tabs-one-tab" role="tablist">
+            <li class="nav-item col-md-2">
+              <a class="nav-link active " style="text-align: center;" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Basic Information</a>
+            </li>
+            <li class="nav-item col-md-3">
+              <a class="nav-link" style="text-align: center;" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Personal Information</a>
+            </li>
+            <li class="nav-item col-md-3">
+              <a class="nav-link" style="text-align: center;" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Education Qualification</a>
+            </li>
+            <li class="nav-item col-md-2">
+              <a class="nav-link" style="text-align: center;" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Work Experience</a>
+            </li>
+            <li class="nav-item col-md-2">
+                <a class="nav-link" style="text-align: center;" id="custom-tabs-one-confirm-tab" data-toggle="pill" href="#custom-tabs-one-confirm" role="tab" aria-controls="custom-tabs-one-confirm" aria-selected="false">User Confirmation</a>
+              </li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <div class="tab-content" id="custom-tabs-one-tabContent">
+            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+         
+                        <div class="row g-1 pl-5 pr-5 pt-3 pb-3 col-md-12">
+                                <div class="form-group col-md-6">
+                                    <label for="fullname">First name</label>
+                                    <input type="text" class="form-control"  name="" id="fullname" placeholder="Fullname" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="fullname">Last name</label>
+                                    <input type="text" class="form-control"  name="" id="fullname" placeholder="Fullname" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="contact">Contact number</label>
+                                    <input type="text" class="form-control" name="number" id="number" placeholder="Contact number" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="dob">Date of birth</label>
+                                    <input type="date" class="form-control" name="dob" id="dob" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender" name="gender" class="form-control" required>
+                                      <option value="Select">Select</option>
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                      <option value="Other">Other</option>
+                                      <option value="Prefer not to say">Prefer not to say</option>
+                                      </select>
+                                      </div>
+
+                                      <div class="form-group col-md-6">
+                                        <label for="mstatus">Marital status</label>
+                                        <select id="mstatus" name="mstatus" class="form-control" required>
+                                          <option value="Select">Select</option>
+                                          <option value="Single">Single</option>
+                                          <option value="Married">Married</option>
+                                          <option value="Divorced">Divorced</option>
+                                          <option value="Prefer not to say">Prefer not to say</option>
+                                          </select>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="photo">Upload photo </label>
+                                           <input type="file" id="pho" name="pho" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="resume">Upload resume </label>
+                                            <input type="file" id="res" name="res" class="form-control">
+                                        </div>
+                                      </div>
+                                          <div class="button">
+                                            
+                                            <button class="btn btn-success">Save</button> 
+                                            <button class="btn btn-primary">Next</button>        
+                                        </div>   
+                                        
+                                        </div>
+                                        
+            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                    <div class="information-form col-md-12"> 
+                                        <div *ngFor="let information of informations; let i = index" class="information row">
+                                            <div class="col-md-3 form-group info">
+                                       
+                                            <label for="info{{i}}"></label>
+                                            <select id="info{{i}}" name="info{{i}}" class="form-control">
+                                              <option value="Select">Select</option>
+                                              <option value="Aadhar Card">Aadhar Card</option>
+                                              <option value="Pan Card">Pan Card</option>
+                                              <option value="Voter Id">Voter ID</option>
+                                              <option value="Ration Card">Ration Card</option>
+                                              <option value="Passport">Passport</option>
+                                              <option value="Licence">License</option>
+                                             </select>
+                                              </div>
+                                              <div class="form-group col-md-3 num">
+                                                <label for="number{{i}}"></label>
+                                                <input type="number" class="form-control" name="number{{i}}" id="number{{i}}" placeholder="Number" >
+                                              </div>
+                                              <div class="col-md-3 form-group doc">
+                                                <label for="doc{{i}}"></label>
+                                                <input type="file" id="doc{{i}}" name="doc{{i}}" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 form-group btnr">
+                                                <button type="btn btn-primary" (click)="removeInformation(i)" class="remove-btn btn btn-danger">Remove</button>
+                                            </div>
+            
+                                           </div>
+                                            
+                                            <div class="add-btn-wrapper">
+                                                <button type="btn btn-dark" (click)="addInformation()" class="add-btn btn btn-dark"><i class="fa fa-plus " aria-hidden="true"></i>Add Information</button>
+                                            </div>
+                                            </div>
+                                    
+                                            <div class="button">
+                                              <!--<button class="btn btn-primary">Previous</button> 
+                                              <button class="btn btn-success">Save</button> 
+                                              <button class="btn btn-primary">Next</button>-->
+                                              <a href="#custom-tabs-one-home" class="btn btn-primary" aria-selected="true" data-toggle="pill">Previous</a>
+                                              <button class="btn btn-success">Save</button>
+                                              <a href="#custom-tabs-one-messages-tab" class="btn btn-primary">Next</a>  
+                                                      
+                                            </div>
+                                            
+                                           
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+               
+                        <div class="qualification-form col-md-12"> 
+                            <div *ngFor="let qualification of qualifications; let i = index" class="qualification row">
+                                <div class="col-md-2 form-group qua">
+                                    <label for="qualification{{i}}"></label>
+                                    <select id="qualification{{i}}" [(ngModel)]="qualification.qualification" name="qualification{{i}}"class="form-control"required>
+                                      
+                                        <option value="10th Standard">10th Standard</option>
+                                        <option value="12th standard">12th standard</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="UG">UG</option>
+                                        <option value="PG">PG</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 form-group spec">
+                                    <label for="specialization{{i}}"></label>
+                                    <input type="text" id="specialization{{i}}" [(ngModel)]="qualification.specialization" name="specialization{{i}}" placeholder="Specialization" class="form-control"required>
+                                </div>
+                                <div class="col-md-2 form-group aca">
+                                    <label for="academicyear{{i}}"></label>
+                                    <input type="text" id="academicyear{{i}}" [(ngModel)]="qualification.academicyear" name="academicyear{{i}}" placeholder="Academic Year" class="form-control"required>
+                                </div>
+                                <div class="col-md-3 form-group doc">
+                                    <label for="document{{i}}"></label>
+                                    <input type="file" id="document{{i}}" [(ngModel)]="qualification.document" name="document{{i}}" class="form-control"required>
+                                </div>
+                                <div class="col-md-1 form-group btnr">
+                                    <button type="btn btn-danger" (click)="removeQualification(i)" class="remove-btn btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                            <div class="add-btn-wrapper">
+                                <button type="btn btn-dark" (click)="addQualification()" class="add-btn btn btn-dark"><i class="fa fa-plus " aria-hidden="true"></i>Add Qualification</button>
+                            </div>
+                        </div>
+                        <div class="button">
+                          <button class="btn btn-primary">Previous</button> 
+                          <button class="btn btn-success">Save</button> 
+                          <button class="btn btn-primary">Next</button>  
+                        </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+               <form  action="">
+                          
+                        <div class="experience-form col-md-12"> <!-- Adjust column width as needed -->
+                            <div *ngFor="let experience of experiences; let i = index" class="experience row">
+                                <div class="col-md-3 form-group cn">
+                                    <label for="company{{i}}">Company Name</label>
+                                    <input type="text" id="company{{i}}" [(ngModel)]="experience.company"  name="company{{i}}" placeholder="Company Name" class="form-control" required >
+                                    
+                                </div>
+                                <div class="col-md-3 form-group jd">
+                                    <label for="joined{{i}}">Joined Date</label>
+                                    <input type="date" id="joining{{i}}" [(ngModel)]="experience.joined" name="joined{{i}}" placeholder="Joined Date" class="form-control"required >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group rd">
+                                    <label for="releaved{{i}}">Releaved Date</label>
+                                    <input type="date" id="releaved{{i}}" [(ngModel)]="experience.releaved" name="releaved{{i}}" placeholder="Releaved Date" class="form-control"required >
+                                    
+                                </div>
+                                <div class="col-md-3 form-group rd">
+                                    <label for="ctc{{i}}">CTC</label>
+                                    <input type="number" id="ctc{{i}}" [(ngModel)]="experience.ctc" name="ctc{{i}}" placeholder="CTC" class="form-control"required >
+                                    
+                                </div>
+                                <div class="col-md-3 form-group rd">
+                                    <label for="reletter{{i}}">Service/Releaved Letter</label>
+                                    <input type="file" id="reletter{{i}}" [(ngModel)]="experience.reletter" name="reletter{{i}}"  class="form-control"required >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group rn">
+                                    <label for="reason{{i}}">Reason</label>
+                                    <input type="text" id="reason{{i}}" [(ngModel)]="experience.reason" name="reason{{i}}" class="form-control"placeholder="Reason"required>
+                                   
+                                </div>
+                                <div class="col-md-3 form-group btnr">
+                                    <button type="btn btn-danger" (click)="removeExperience(i)" class="remove-btn btn btn-danger"> Remove</button>
+                                </div>
+                            </div>
+                            <div class="add-btn-wrapper ">
+                                <button type="btn btn-dark" (click)="addExperience()" class="add-btn btn btn-dark"><i class="fa fa-plus " aria-hidden="true"></i>Add Experience</button>
+                            </div>
+                            <div class="button">
+                              <button class="btn btn-primary">Previous</button> 
+                              <button class="btn btn-success">Save</button> 
+                              <button class="btn btn-primary">Next</button>  
+                                
+                            </div>
+                            </div>
+                            </form>
+                            </div>
+                      
+
+            <div class="tab-pane fade" id="custom-tabs-one-confirm" role="tabpanel" aria-labelledby="custom-tabs-one-confirm-tab">
+              
+                        <form  action=""#formGroup="ngForm"  >
+                        <div class="form-group col-md-6">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" class="form-control" required>
+                              <option value="Select">Select</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              <option value="Other">Other</option>
+                             </select>
+                        </div>
+                              <div class="form-group col-md-6">
+                                <label for="contact">Email id </label>
+                                <input type="text" class="form-control" name="number" id="number" placeholder="Enter email" required >
+                               
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="dob">Date</label>
+                                <input type="date" class="form-control" name="dob" id="dob" required >
+                               
+                            </div>
+                            
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">I accept hereby declare that the information provided is true and correct.</label>
+                              </div>
+                            <div class="button">
+                              <button class="btn btn-primary">Previous</button> 
+                              <button class="btn btn-success">Submit</button> 
+                               
+                            </div>
+                           
+                      </form>
+                      </div>
+</div>
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2024 <a href="">NPS.io</a>.</strong> All rights reserved.
+  </footer>

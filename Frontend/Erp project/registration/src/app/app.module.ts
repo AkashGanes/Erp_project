@@ -30,6 +30,7 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { HolidayPageComponent } from './holiday-page/holiday-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { AttendanceListComponent } from './attendance-list/attendance-list.component';
+import { InformationComponent } from './information/information.component';
 
 import { NgSelectModule} from '@ng-select/ng-select';
 
@@ -81,6 +82,7 @@ import { StaffViewComponent } from './staff-view/staff-view.component';
     AttendanceComponent,
     AttendanceListComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     StaffInformationComponent,
     ListstaffComponent,
     DemoComponent,
@@ -100,6 +102,9 @@ import { StaffViewComponent } from './staff-view/staff-view.component';
   
 >>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f
   
+=======
+    InformationComponent
+>>>>>>> 52a39e44a4bea9d622ccac9e0d85ad81dd0dceac
   ],
   imports: [
     BrowserModule,

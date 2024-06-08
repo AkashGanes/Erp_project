@@ -27,6 +27,7 @@ export class AttendanceComponent implements OnInit{
 
   constructor(public loginService:LoginSignupService,public auth:UserAuthService,public router:Router){}
   ngOnInit(): void {
+    
     this.decodeToken= this.auth.decodeToken()
   if(this.decodeToken!=null){
     this.userId=this.decodeToken.user_id
@@ -40,13 +41,13 @@ export class AttendanceComponent implements OnInit{
       this.clockedIn = true;
       this.clockedOut=true
     }else if(this.clockedOut) {
-      if(this.attendance.status){
+      if(this.attendance.status.length>=8){
         this.attendance.outTime = this.getCurrentTime();
       this.calculateTotalTime();
       this.clockedOut=false
       this.submit=true
       }else this.submit=true
-    }else if(this.submit && (this.attendance.status!='')){
+    }else if(this.submit && (this.attendance.status.length>=8)){
       console.log(this.attendance)
       this.loginService.saveAttendance(this.attendance,this.userId).subscribe((resp:any)=>{
         if(resp!=null){

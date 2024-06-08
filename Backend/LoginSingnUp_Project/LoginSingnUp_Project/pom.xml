@@ -54,8 +54,12 @@
 <<<<<<< HEAD:Backend/LoginSingnUp_Project/LoginSingnUp_Project/pom.xml
 =======
 
+<<<<<<< HEAD:Backend/LoginSingnUp_Project/LoginSingnUp_Project/pom.xml
       
 >>>>>>> bbd6a4ad2c134bde309f25877f447a7bd799024f:Backend/LoginSingnUp_Project/pom.xml
+=======
+        
+>>>>>>> 52a39e44a4bea9d622ccac9e0d85ad81dd0dceac:Backend/LoginSingnUp_Project/pom.xml
         <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
